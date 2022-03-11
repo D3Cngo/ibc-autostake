@@ -25,12 +25,7 @@ function Validators(props) {
     const results = _.omit(props.validators, props.operators.map(el => el.address))
     return Object.entries(filteredResults(results))
   }
-  function calculateApy(validatorCommission, periodPerYear) {
-    let chainApr = (1 + props.inflation / props.blocksPerYear) ** props.blocksPerYear - 1;
-    let realApr = chainApr * (1 - validatorCommission);
-    let apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
-    return (apy*100).toFixed(2)
-  }
+
   function filterValidators(event){
     setFilter(event.target.value)
   }
@@ -66,8 +61,6 @@ function Validators(props) {
             </div>
           </div>
         </td>
-        <td>{calculateApy(item.commission.commission_rates.rate,365)}%</td>
-
         <td className="text-center">
           {isOperator
             ? <TooltipIcon icon={<CheckCircle className="text-success" />} identifier={item.operator_address}
@@ -93,7 +86,6 @@ function Validators(props) {
           <tbody>
             <tr>
               <th>Validator</th>
-              <th>APY</th>
               <th className="text-center">Auto-Compound</th>
               <th></th>
             </tr>

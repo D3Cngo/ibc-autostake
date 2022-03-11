@@ -134,7 +134,7 @@ function NetworkSelect(props) {
                       </div>
                       <div className="col text-end pt-1">
                         {network.operators.length > 0 &&
-                        <small><Badge className="ms-3 rounded-pill" bg="success">Active</Badge></small>
+                        <small><Badge className="ms-3 rounded-pill" bg="success">Validator Active</Badge></small>
                         }
                    
                       </div>

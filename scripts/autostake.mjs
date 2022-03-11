@@ -10,36 +10,9 @@ import {
 import { MsgWithdrawDelegatorReward } from "cosmjs-types/cosmos/distribution/v1beta1/tx.js";
 import { MsgDelegate } from "cosmjs-types/cosmos/staking/v1beta1/tx.js";
 import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
+
 import fs from 'fs'
 import _ from 'lodash'
-
-const colors = {
-  Reset: "\x1b[0m",
-  Red: "\x1b[31m",
-  Green: "\x1b[32m",
-  Yellow: "\x1b[33m"
-}
-const infoLog = console.info;
-const logLog = console.log;
-const warnLog = console.warn;
-const errorLog = console.error;
-
-function formatDate() {
-  const date = new Date();
-  return String(date.getHours()).padStart(2, '0')
-         + ':' + String(date.getMinutes()).padStart(2, '0')
-         + ':' + String(date.getSeconds()).padStart(2, '0');
-}
-
-function formatMessage(arg, type, emoji, title) {
-  const copyArgs = Array.prototype.slice.call(arg);
-  copyArgs.unshift(`🕐  ${formatDate()} ${type}${emoji} [${title}]${colors.Reset}`);
-  return copyArgs;
-}
-console.log = function () { logLog.apply(null, formatMessage(arguments, colors.Reset, ' ➖  ', 'LOG')); };
-console.info = function () { infoLog.apply(null, formatMessage(arguments, colors.Green, ' 🟢  ', 'INFO')); };
-console.warn = function () { warnLog.apply(null, formatMessage(arguments, colors.Yellow, ' 🟠  ', 'WARN')); };
-console.error = function () { errorLog.apply(null, formatMessage(arguments, colors.Red, ' 🔴  ', 'ERROR')); };
 
 class Autostake {
   constructor(){
@@ -59,22 +32,21 @@ class Autostake {
         try {
           client = await this.getClient(data)
         } catch (error) {
-          return console.error('Failed to connect: ', error)
+          return console.log('Failed to connect')
         }
 
-        if(!client.operator) return console.warn('Compound bot not found on this network.')
-        if(!client.network.authzSupport) return console.warn('No Authz support on this network yet.')
-        if(!client.network.connected) return console.error('Could not connect to REST API')
-        if(!client.signingClient.connected) return console.error('Could not connect to RPC API')
+        if(!client.operator) return console.log('Compound bot not found on this network.')
+        if(!client.network.authzSupport) return console.log('No Authz support on this network yet.')
+        if(!client.network.connected) return console.log('Could not connect to REST API')
+        if(!client.signingClient.connected) return console.log('Could not connect to RPC API')
 
-        console.info('Using REST URL: ', client.network.restUrl)
-        console.info('Using RPC URL: ', client.signingClient.rpcUrl)
-        console.log('------------------------------------------------------------------------')
+        console.log('Using REST URL: ', client.network.restUrl)
+        console.log('Using RPC URL: ', client.signingClient.rpcUrl)
+        console.log('-------------------------------------------------')
 
         await this.checkBalance(client)
 
-        console.log('------------------------------------------------------------------------')
-        console.info('Finding delegators...')
+        console.log('Finding delegators...')
         let delegations
         const addresses = await this.getDelegations(client).then(delegations => {
           return delegations.map(delegation => {
@@ -84,15 +56,14 @@ class Autostake {
           })
         })
 
-        console.log('------------------------------------------------------------------------')
-        console.info("Checking", addresses.length, "delegators for grants...")
+        console.log("Checking", addresses.length, "delegators for grants...")
         let grantCalls = addresses.map(item => {
           return async () => {
             try {
               const validators = await this.getGrantValidators(client, item)
               return validators ? item : undefined
             } catch (error) {
-              console.error(item, 'Failed to get address')
+              console.log(item, 'Failed to get address')
             }
           }
         })
@@ -101,14 +72,13 @@ class Autostake {
         })
         grantedAddresses = _.compact(grantedAddresses.flat())
 
-        console.log('------------------------------------------------------------------------')
-        console.info("Found", grantedAddresses.length, "delegators with valid grants...")
+        console.log("Found", grantedAddresses.length, "delegators with valid grants...")
         let calls = _.compact(grantedAddresses).map(item => {
           return async () => {
             try {
               await this.autostake(client, item, [client.operator.address])
             } catch (error) {
-              console.error(item, 'ERROR: Skipping this run -', error.message)
+              console.log(item, 'ERROR: Skipping this run -', error.message)
             }
           }
         })
@@ -128,9 +98,8 @@ class Autostake {
     const accounts = await wallet.getAccounts()
     const botAddress = accounts[0].address
 
-    console.log('------------------------------------------------------------------------')
-    console.info(data.prettyName, ' | 🤖 - ', botAddress)
-    console.log('------------------------------------------------------------------------')
+    console.log(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
+    console.log('-------------------------------------------------')
 
     const client = await network.signingClient(wallet)
     if(client.connected){
@@ -156,14 +125,14 @@ class Autostake {
     return client.restClient.getBalance(client.operator.botAddress, client.network.denom)
       .then(
         (balance) => {
-          console.warn("Bot balance is", balance.amount, balance.denom)
+          console.log("Bot balance is", balance.amount, balance.denom)
           if(balance.amount < 1_000){
-            console.warn('Bot balance is too low. Need more vespene gas.')
+            console.log('Bot balance is too low')
             process.exit()
           }
         },
         (error) => {
-          console.error("ERROR:", error.message || error)
+          console.log("ERROR:", error.message || error)
           process.exit()
         }
       )
@@ -173,7 +142,7 @@ class Autostake {
     return client.restClient.getAllValidatorDelegations(client.operator.address, 50, (pages) => {
       console.log("...batch", pages.length)
     }).catch(error => {
-      console.error("ERROR:", error.message || error)
+      console.log("ERROR:", error.message || error)
       process.exit()
     })
   }
@@ -185,7 +154,7 @@ class Autostake {
           if(result.claimGrant && result.stakeGrant){
             const grantValidators = result.stakeGrant.authorization.allow_list.address
             if(!grantValidators.includes(client.operator.address)){
-              console.warn(delegatorAddress, " | Skipping validator.")
+              console.log(delegatorAddress, "Not autostaking for this validator, skipping")
               return
             }
 
@@ -193,7 +162,7 @@ class Autostake {
           }
         },
         (error) => {
-          console.error(delegatorAddress, "ERROR skipping this run:", error.message || error)
+          console.log(delegatorAddress, "ERROR skipping this run:", error.message || error)
         }
       )
   }
@@ -204,11 +173,11 @@ class Autostake {
     const perValidatorReward = parseInt(totalRewards / validators.length)
 
     if(perValidatorReward < client.operator.data.minimumReward){
-      console.warn(address, perValidatorReward, client.network.denom, 'claim reward below threshold, skipping...')
+      console.log(address, perValidatorReward, client.network.denom, 'reward is too low, skipping')
       return
     }
 
-    console.info(address, "Autostaking", perValidatorReward, client.network.denom, validators.length > 1 ? "per validator" : '')
+    console.log(address, "Autostaking", perValidatorReward, client.network.denom, validators.length > 1 ? "per validator" : '')
 
     let messages = validators.map(el => {
       return this.buildRestakeMessage(address, el, perValidatorReward, client.network.denom)
@@ -216,11 +185,11 @@ class Autostake {
 
     let execMsg = this.buildExecMessage(client.operator.botAddress, messages)
 
-    const memo = 'Compounded by ' + client.operator.moniker
+    const memo = 'REStaked by ' + client.operator.moniker
     return client.signingClient.signAndBroadcast(client.operator.botAddress, [execMsg], undefined, memo).then((result) => {
-      console.info(address, "Successfully broadcasted");
+      console.log(address, "Successfully broadcasted");
     }, (error) => {
-      console.error(address, 'Failed to broadcast:', error.message)
+      console.log(address, 'Failed to broadcast:', error.message)
       // Skip on failure
       // process.exit()
     })
@@ -267,7 +236,7 @@ class Autostake {
           return total
         },
         (error) => {
-          console.error(address, "ERROR skipping this run:", error.message || error)
+          console.log(address, "ERROR skipping this run:", error.message || error)
           return 0
         }
       )
