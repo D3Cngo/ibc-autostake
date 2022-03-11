@@ -13,7 +13,7 @@ import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
 
 import fs from 'fs'
 import _ from 'lodash'
-const chalk = require('chalk');
+import chalk from 'chalk'
 
 class Autostake {
   constructor(){
