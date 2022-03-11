@@ -176,7 +176,7 @@ class Delegations extends React.Component {
       for (const [address, validator] of Object.entries(validators)) {
         const realApr = chainApr * (1 - parseCommissionRate(validator));
         const apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
-        //console.log(chainApr, realApr, apy);
+        console.log(chainApr, realApr, apy);
         validatorApy[address] = apy;
       }
       this.setState({ validatorApy });
