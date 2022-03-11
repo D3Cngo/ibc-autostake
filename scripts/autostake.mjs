@@ -13,7 +13,7 @@ import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
 
 import fs from 'fs'
 import _ from 'lodash'
-import chalk from 'chalk'
+import { chalk } from 'chalk'
 
 class Autostake {
   constructor(){
@@ -101,7 +101,7 @@ class Autostake {
     const botAddress = accounts[0].address
 
     console.log('------------------------------------------------------------------------')
-    console.log(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
+    console.log(chalk.green(data.prettyName, ' | Staking bot reporting for duty - ', botAddress))
     console.log('------------------------------------------------------------------------')
 
     const client = await network.signingClient(wallet)
