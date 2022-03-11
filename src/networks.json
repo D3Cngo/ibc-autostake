@@ -1,0 +1,200 @@
+[
+  {
+    "name": "osmosis",
+    "prettyName": "Osmosis",
+    "chainId": "osmosis-1",
+    "prefix": "osmo",
+    "denom": "uosmo",
+    "restUrl": [
+      "https://rest.cosmos.directory/osmosis",
+      "https://lcd-osmosis.blockapsis.com"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/osmosis",
+      "https://osmosis.validator.network",
+      "https://rpc-osmosis.blockapsis.com",
+      "https://osmosis-1--rpc--full.datahub.figment.io/apikey/7e09ca08f140fde0a3ed23dca0d019d1"
+    ],
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/osmo.svg",
+    "gasPrice": "0uosmo",
+    "testAddress": "osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g",
+    "ownerAddress": "osmovaloper1xf9zpq5kpxks49cg606tzd8qstaykxgt2vs0d5",
+    "operators": [
+      {
+        "address": "osmovaloper1xf9zpq5kpxks49cg606tzd8qstaykxgt2vs0d5",
+        "botAddress": "osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g",
+        "runTime": "21:00",
+        "minimumReward": 1000
+      }
+    ],
+    "authzSupport": true
+  },
+  {
+    "name": "juno",
+    "prettyName": "Juno",
+    "chainId": "juno-1",
+    "prefix": "juno",
+    "denom": "ujuno",
+    "restUrl": [
+      "https://rest.cosmos.directory/juno",
+      "https://lcd-juno.itastakers.com"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/juno",
+      "https://rpc-juno.itastakers.com"
+    ],
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/juno.svg",
+    "gasPrice": "0.0025ujuno",
+    "testAddress": "juno1yxsmtnxdt6gxnaqrg0j0nudg7et2gqcz8yyl52",
+    "operators": [
+      {
+        "address": "junovaloper1zxx8j75ngm8m38v9l5wreaavwnsuun7gcq5cu8",
+        "botAddress": "juno1n3m6rj0w9lgzg7leppnaru2xguraxhqcn4eyv6",
+        "runTime": "21:00",
+        "minimumReward": 10000
+      }
+    ],
+    "authzSupport": true
+  },
+  {
+    "name": "cosmoshub",
+    "prettyName": "Cosmos Hub",
+    "chainId": "cosmoshub-4",
+    "prefix": "cosmos",
+    "denom": "uatom",
+    "restUrl": [
+      "https://rest.cosmos.directory/cosmoshub",
+      "https://lcd-cosmoshub.blockapsis.com"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/cosmoshub",
+      "https://cosmoshub.validator.network",
+      "https://rpc-cosmoshub.blockapsis.com"
+    ],
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/atom.svg",
+    "gasPrice": "0.0025uatom",
+    "testAddress": "cosmos1yxsmtnxdt6gxnaqrg0j0nudg7et2gqcz3k8ynk",
+    "operators": [
+      {
+        "address": "cosmosvaloper199mlc7fr6ll5t54w7tts7f4s0cvnqgc59nmuxf",
+        "botAddress": "cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6",
+        "runTime": "21:00",
+        "minimumReward": 10000
+      }
+    ],
+    "authzSupport": true
+  },
+
+  {
+    "name": "terra",
+    "enabled": false,
+    "prettyName": "Terra",
+    "chainId": "columbus-5",
+    "prefix": "terra",
+    "denom": "uluna",
+    "restUrl": [
+      "https://rest.cosmos.directory/terra"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/terra"
+    ],
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/luna.svg",
+    "testAddress": "terra1rnszu7kumz5lmgdk3fv2pmzt3s8vhcddqep7d4",
+    "gasPrice": "0.015uluna",
+    "operators": [
+      {
+        "address": "terravaloper1f2t96sz9hnwsqnneux6v28xfgn07pkxjduvwjz",
+        "botAddress": "terra194ytn50yhh67rdha8akhs7c6zulnz4n20nnrwr",
+        "runTime": "21:00",
+        "minimumReward": 1000
+      }
+    ],
+    "authzSupport": true
+  },
+
+  {
+    "name": "evmos",
+    "enabled": false,
+    "prettyName": "Evmos",
+    "chainId": "evmos_9001-1",
+    "prefix": "evmos",
+    "denom": "aevmos",
+    "decimals": 18,
+    "restUrl": [
+      "https://rest.cosmos.directory/evmos",
+      "https://rest.bd.evmos.org:1317"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/evmos",
+      "https://tendermint.bd.evmos.org:26657"
+    ],
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/evmos.png",
+    "operators": [
+      {
+        "address": "evmosvaloper1shvcjzhcxau6qtlz9w82a646ecwp4hq7ayqt0w",
+        "botAddress": "evmos194ytn50yhh67rdha8akhs7c6zulnz4n2tkcdkt",
+        "runTime": "21:00",
+        "minimumReward": 1000
+      }
+    ],
+    "authzSupport": true
+  },
+  {
+    "name": "umee",
+    "prettyName": "umee",
+    "chainId": "umee-1",
+    "prefix": "umee",
+    "denom": "uumee",
+    "restUrl": [
+      "https://api.aphrodite.main.network.umee.cc",
+      "https://api.apollo.main.network.umee.cc",
+      "https://api.artemis.main.network.umee.cc",
+      "https://api.athena.main.network.umee.cc",
+      "https://api.beaked.main.network.umee.cc",
+      "https://api.bottlenose.main.network.umee.cc"
+    ],
+    "rpcUrl": [
+      "https://rpc.aphrodite.main.network.umee.cc",
+      "https://rpc.apollo.main.network.umee.cc",
+      "https://rpc.artemis.main.network.umee.cc",
+      "https://rpc.athena.main.network.umee.cc",
+      "https://rpc.beaked.main.network.umee.cc",
+      "https://rpc.bottlenose.main.network.umee.cc"
+    ],
+    "image": "https://raw.githubusercontent.com/cosmos/chain-registry/master/umee/images/umee.png",
+    "operators": [
+      {
+        "address": "umeevaloper1gvt9l5tshr0fp8ksl2tuem584z69eyvt9m8yh6",
+        "botAddress": "umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg",
+        "runTime": "10:00",
+        "minimumReward": 10000
+      }
+    ],
+    "authzSupport": true
+  },
+  {
+    "name": "lumnetwork",
+    "prettyName": "Lum Network",
+    "chainId": "lum-network-1",
+    "prefix": "lum",
+    "denom": "ulum",
+    "restUrl": [
+      "https://rest.cosmos.directory/lumnetwork",
+      "https://node0.mainnet.lum.network/rest"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/lumnetwork",
+      "https://node0.mainnet.lum.network/rpc"
+    ],
+    "image": "https://raw.githubusercontent.com/lum-network/mainnet/master/assets/lum.png",
+    "operators": [
+      {
+        "address": "lumvaloper1068lx20jqswpwtykfezssdkn524kqlmlqjeqpa",
+        "botAddress": "lum19pqrxrl6n0g0mky4y79hlfzchprmsp5jxdyjew",
+        "runTime": "21:00",
+        "minimumReward": 1000
+      }
+    ],
+    "authzSupport": true
+  }
+]

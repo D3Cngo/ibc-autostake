@@ -1,0 +1,154 @@
+body{
+  background-color: #F7FAFC;
+}
+
+header a.moniker{
+  margin-left: 15px;
+}
+.sidebar-wrapper{
+  background-color: #191d28;
+  border-radius: 0.5rem;
+  margin-top: -100px;
+  height: calc(100vh - 120px);
+  z-index: 9;
+}
+.sidebar-nav {
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav>.sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+  background-color: transparent !important;
+  z-index: 1;
+}
+
+.sidebar-nav>.sidebar-brand img {
+  zoom: 80%;
+  margin-bottom: 40px;
+}
+
+.sidebar-nav>.sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+.sidebar-nav li {
+  padding:10px 30px 10px 0px;
+  line-height: 40px;
+}
+.sidebar-nav li:first-of-type {
+  margin-top:10px;
+}
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+  padding-left:18px;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #sidebar-wrapper {
+    width: 0;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}
+.clipboard.copied{
+  text-decoration: underline;
+}
+
+.btn-circle-sm {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0.9rem;
+}
+
+.btn-circle-lg {
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 1.1rem;
+}
+
+.btn-circle-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 1.3rem;
+}
+/* .nav-link:hover {
+  background-color: #525252 !important
+} */
+
+.nav-link .fa {
+  transition: all 1s
+}
+
+.nav-link:hover .fa {
+  transform: rotate(360deg)
+}
+
+.footerCred {
+  text-decoration: none;
+}
+
+.main-head{
+  background-color: #191D28;
+  border-radius: 0.5rem;
+  margin-top:10px;
+  z-index: 999;
+}
+.main-head span{
+  color: #F7FAFC;
+}
+
+span.network.h6{
+  color: #9e9e9e;
+}
+span.nav-link.disabled.clipboard{
+  color: #9e9e9e;
+}
+
+img.chain-logo {
+  width: 50px;
+}
+
+img.frown{
+  stroke: white !important;
+  fill: white !important;
+}
+
+li .badge {
+  margin-left: 10px;
+}
