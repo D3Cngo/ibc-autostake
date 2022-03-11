@@ -34,13 +34,13 @@ function formatDate() {
 
 function formatMessage(arg, type, emoji, title) {
   const copyArgs = Array.prototype.slice.call(arg);
-  copyArgs.unshift(`🕐  ${formatDate()} ${colors[type]}${emoji} [${title}]${colors.Reset}`);
+  copyArgs.unshift(`🕐  ${formatDate()} ${colors}${emoji} [${title}]${colors.Reset}`);
   return copyArgs;
 }
-console.log = function () { logLog.apply(null, formatMessage(arguments, 'Reset', '   ', 'LOG')); };
-console.info = function () { infoLog.apply(null, formatMessage(arguments, 'Green', '🟢  ', 'INFO')); };
-console.warn = function () { warnLog.apply(null, formatMessage(arguments, 'Yellow', '🚧  ', 'WARN')); };
-console.error = function () { errorLog.apply(null, formatMessage(arguments, 'Red', '🛑  ', 'ERROR')); };
+console.log = function () { logLog.apply(null, formatMessage(arguments, colors.Reset, '   ', 'LOG')); };
+console.info = function () { infoLog.apply(null, formatMessage(arguments, colors.Green, '🟢  ', 'INFO')); };
+console.warn = function () { warnLog.apply(null, formatMessage(arguments, colors.Yellow, '🚧  ', 'WARN')); };
+console.error = function () { errorLog.apply(null, formatMessage(arguments, colors.Red, '🛑  ', 'ERROR')); };
 
 class Autostake {
   constructor(){
