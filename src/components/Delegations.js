@@ -28,7 +28,7 @@ class Delegations extends React.Component {
   constructor(props) {
     super(props);
     this.state = {operatorGrants: {}, validatorLoading: {}}
-    this.showNetworkSelect = this.showNetworkSelect.bind(this);
+
     this.setError = this.setError.bind(this)
     this.setClaimLoading = this.setClaimLoading.bind(this)
     this.onClaimRewards = this.onClaimRewards.bind(this)
@@ -43,8 +43,8 @@ class Delegations extends React.Component {
   }
 
   async componentDidUpdate(prevProps){
-    if(this.props.network !== prevProps.network){
-      clearInterval(this.state.refreshInterval);
+    if (this.props.network !== prevProps.network) {
+            clearInterval(this.state.refreshInterval);
     }
 
     if(!this.props.address) return
@@ -64,7 +64,8 @@ class Delegations extends React.Component {
   refresh(){
     this.getRewards()
     this.calculateApy();
-
+    this.getInflation()
+    this.getBlocksPerYear()
     this.refreshInterval()
     if(this.props.operators.length){
       this.getGrants()
@@ -75,12 +76,34 @@ class Delegations extends React.Component {
 
   refreshInterval(){
     const interval = setInterval(() => {
-      this.getRewards(true)
+      this.getRewards()
     }, 15_000)
     this.setState({refreshInterval: interval})
   }
 
-  getRewards(hideError) {
+  getInflation() { 
+    this.props.restClient.getInflation().then((inflation) => { this.setState({inflation: inflation})},
+        (error) => {
+          if([404, 500].includes(error.response && error.response.status)){
+          this.setState({ rewards: {} });
+          }else{
+            this.setState({ error: 'Failed to get inflation. Please refresh' });
+          }
+        })
+  }
+
+  getBlocksPerYear() { 
+    this.props.restClient.getBlocksPerYear().then((blocksPerYear) => { this.setState({blocksPerYear: blocksPerYear})},
+        (error) => {
+          if([404, 500].includes(error.response && error.response.status)){
+          this.setState({ rewards: {} });
+          }else{
+            this.setState({ error: 'Failed to get number of blocks. Please refresh' });
+          }
+        })
+  }
+
+  getRewards() {
     this.props.restClient.getRewards(this.props.address, this.props.network.denom)
       .then(
         (rewards) => {
@@ -90,7 +113,7 @@ class Delegations extends React.Component {
           if([404, 500].includes(error.response && error.response.status)){
           this.setState({ rewards: {} });
           }else{
-            if(!hideError) this.setState({ error: 'Failed to get rewards. Please refresh' });
+            this.setState({ error: 'Failed to get rewards. Please refresh' });
           }
         }
       )
@@ -262,12 +285,15 @@ class Delegations extends React.Component {
     }
   }
 
-  showNetworkSelect(){
-    this.setState({showNetworkSelect: true})
-  }
-
   denomRewards(rewards){
     return rewards.reward.find(reward => reward.denom === this.props.network.denom)
+  }
+
+  calculateApy(validatorCommission, periodPerYear) {
+    let chainApr = (1 + this.state.inflation / this.state.blocksPerYear) ** this.state.blocksPerYear - 1;
+    let realApr = chainApr * (1 - validatorCommission);
+    let apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
+    return (apy*100).toFixed(2)
   }
 
   renderValidator(validatorAddress, delegation){
@@ -318,17 +344,17 @@ class Delegations extends React.Component {
             ) : (
               <TooltipIcon icon={<CheckCircle className="text-success" />} identifier={validatorAddress} tooltip="This validator can auto-compound your rewards" />
             ) : (
-              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a REStake operator" />
+              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator does not support auto-compounding yet." />
             )}
           </td>
           <td className="d-none d-lg-table-cell">{parseCommissionRate(validator)*100}%</td>
           <td className="d-none d-lg-table-cell">{this.state.validatorApy ? ( !isNaN(this.state.validatorApy[validatorAddress]) ? (this.state.validatorApy[validatorAddress] *100).toFixed(2).toString() + " %" : ""): ""}</td>
      
           <td className="d-none d-sm-table-cell">
-            <Coins coins={delegationBalance} decimals={this.props.network.data.decimals} />
+            <Coins coins={delegationBalance} />
           </td>
           <td className="d-none d-sm-table-cell">
-            {denomRewards && <Coins key={denomRewards.denom} coins={denomRewards} decimals={this.props.network.data.decimals} />}
+            {denomRewards && <Coins key={denomRewards.denom} coins={denomRewards} />}
           </td>
           <td>
             <div className="d-grid gap-2 d-md-flex justify-content-end">
@@ -394,7 +420,7 @@ class Delegations extends React.Component {
                 ) : (
                   <Delegate
                     button={true} variant="primary" size="sm"
-                    tooltip='Delegate to enable auto-compounding'
+                    tooltip='Delegate to enable REStake'
                     network={this.props.network}
                     address={this.props.address}
                     validator={validator}
@@ -501,16 +527,26 @@ class Delegations extends React.Component {
         )}
         <div className="row">
           <div className="col">
-          <Button className="btn-secondary mr-5" onClick={this.showNetworkSelect}>
-          {this.props.network.prettyName}
-                    </Button>
-                              </div>
+            <Delegate
+              button={true}
+              blocksPerYear={this.state.blocksPerYear}
+              inflation={ this.state.inflation}
+              network={this.props.network}
+              operators={this.props.operators}
+              address={this.props.address}
+              validators={this.props.validators}
+              getValidatorImage={this.props.getValidatorImage}
+              delegations={this.props.delegations}
+              availableBalance={this.props.balance}
+              stargateClient={this.props.stargateClient}
+              onDelegate={this.props.onAddValidator} />
+          </div>
           <div className="col">
             <div className="d-grid gap-2 d-md-flex justify-content-end">
               {this.state.rewards && (
                 !this.state.claimLoading
                   ? (
-                    <><Dropdown>
+                    <Dropdown>
                       <Dropdown.Toggle variant="secondary" id="claim-dropdown" disabled={this.totalRewards().amount === 0}>
                         All Rewards
                       </Dropdown.Toggle>
@@ -535,13 +571,8 @@ class Delegations extends React.Component {
                           onClaimRewards={this.onClaimRewards}
                           setLoading={this.setClaimLoading}
                           setError={this.setError} />
-
                       </Dropdown.Menu>
                     </Dropdown>
-                    
-              
-                          </>
-                     
                   ) : (
                     <Button className="btn-secondary mr-5" disabled>
                       <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
