@@ -458,7 +458,7 @@ class Delegations extends React.Component {
               <TooltipIcon
                 icon={<XCircle className="opacity-50" />}
                 identifier={validatorAddress}
-                tooltip="This validator is not a REStake operator"
+                tooltip="This validator is not a ShapeShift operator"
               />
             )}
           </td>
@@ -574,7 +574,7 @@ class Delegations extends React.Component {
                     button={true}
                     variant="primary"
                     size="sm"
-                    tooltip="Delegate to enable REStake"
+                    tooltip="Delegate to enable daily compounding"
                     network={this.props.network}
                     address={this.props.address}
                     validator={validator}
@@ -619,14 +619,13 @@ class Delegations extends React.Component {
         {this.state.authzMissing && (
           <AlertMessage variant="warning" dismissible={false}>
             {this.props.network.prettyName} doesn't support Authz just yet. You
-            can manually restake for now and REStake is ready when support is
-            enabled
+            can manually restake for now.
           </AlertMessage>
         )}
         {!this.state.authzMissing && !this.props.operators.length && (
           <AlertMessage
             variant="warning"
-            message="There are no REStake operators for this network yet. You can compound manually, or check the About section to run one yourself"
+            message="There are no operators for this network yet. You can compound manually, or check the About section to run one yourself"
             dismissible={false}
           />
         )}
@@ -649,7 +648,7 @@ class Delegations extends React.Component {
           {alerts}
           <div className="text-center">
             <p>
-              There are no REStake operators for this network yet. You can
+              There are no operators for this network yet. You can
               delegate to other validators in the meantime.
             </p>
             <Delegate
@@ -678,7 +677,7 @@ class Delegations extends React.Component {
             <thead>
               <tr>
                 <th colSpan={2}>Validator</th>
-                <th className="d-none d-sm-table-cell text-center">REStake</th>
+                <th className="d-none d-sm-table-cell text-center">Auto-Compound</th>
                 <th className="d-none d-lg-table-cell">Commission</th>
                 <th className="d-none d-lg-table-cell">APY</th>
                 <th className="d-none d-sm-table-cell">Delegation</th>
