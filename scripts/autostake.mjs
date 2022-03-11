@@ -32,21 +32,22 @@ class Autostake {
         try {
           client = await this.getClient(data)
         } catch (error) {
-          return console.log('Failed to connect')
+          return console.error('Failed to connect')
         }
 
-        if(!client.operator) return console.log('Compound bot not found on this network.')
-        if(!client.network.authzSupport) return console.log('No Authz support on this network yet.')
-        if(!client.network.connected) return console.log('Could not connect to REST API')
-        if(!client.signingClient.connected) return console.log('Could not connect to RPC API')
+        if(!client.operator) return console.warn('Compound bot not found on this network.')
+        if(!client.network.authzSupport) return console.warn('No Authz support on this network yet.')
+        if(!client.network.connected) return console.error('Could not connect to REST API')
+        if(!client.signingClient.connected) return console.error('Could not connect to RPC API')
 
-        console.log('Using REST URL: ', client.network.restUrl)
-        console.log('Using RPC URL: ', client.signingClient.rpcUrl)
-        console.log('-------------------------------------------------')
+        console.info('Using REST URL: ', client.network.restUrl)
+        console.info('Using RPC URL: ', client.signingClient.rpcUrl)
+        console.log('------------------------------------------------------------------------')
 
         await this.checkBalance(client)
 
-        console.log('Finding delegators...')
+        console.log('------------------------------------------------------------------------')
+        console.info('Finding delegators...')
         let delegations
         const addresses = await this.getDelegations(client).then(delegations => {
           return delegations.map(delegation => {
@@ -98,8 +99,9 @@ class Autostake {
     const accounts = await wallet.getAccounts()
     const botAddress = accounts[0].address
 
-    console.log(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
-    console.log('-------------------------------------------------')
+    console.log('------------------------------------------------------------------------')
+    console.info(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
+    console.log('------------------------------------------------------------------------')
 
     const client = await network.signingClient(wallet)
     if(client.connected){
@@ -125,14 +127,14 @@ class Autostake {
     return client.restClient.getBalance(client.operator.botAddress, client.network.denom)
       .then(
         (balance) => {
-          console.log("Bot balance is", balance.amount, balance.denom)
+          console.info("Bot balance is", balance.amount, balance.denom)
           if(balance.amount < 1_000){
-            console.log('Bot balance is too low')
+            console.error('Bot balance is too low. Need more vespene gas.')
             process.exit()
           }
         },
         (error) => {
-          console.log("ERROR:", error.message || error)
+          console.error("ERROR:", error.message || error)
           process.exit()
         }
       )
@@ -142,7 +144,7 @@ class Autostake {
     return client.restClient.getAllValidatorDelegations(client.operator.address, 50, (pages) => {
       console.log("...batch", pages.length)
     }).catch(error => {
-      console.log("ERROR:", error.message || error)
+      console.error("ERROR:", error.message || error)
       process.exit()
     })
   }
@@ -154,7 +156,7 @@ class Autostake {
           if(result.claimGrant && result.stakeGrant){
             const grantValidators = result.stakeGrant.authorization.allow_list.address
             if(!grantValidators.includes(client.operator.address)){
-              console.log(delegatorAddress, "Not autostaking for this validator, skipping")
+              console.warn(delegatorAddress, " | Skipping validator.")
               return
             }
 
@@ -162,7 +164,7 @@ class Autostake {
           }
         },
         (error) => {
-          console.log(delegatorAddress, "ERROR skipping this run:", error.message || error)
+          console.error(delegatorAddress, "ERROR skipping this run:", error.message || error)
         }
       )
   }
@@ -173,7 +175,7 @@ class Autostake {
     const perValidatorReward = parseInt(totalRewards / validators.length)
 
     if(perValidatorReward < client.operator.data.minimumReward){
-      console.log(address, perValidatorReward, client.network.denom, 'reward is too low, skipping')
+      console.warn(address, perValidatorReward, client.network.denom, 'reward is too low, skipping')
       return
     }
 

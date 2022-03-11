@@ -3620,6 +3620,11 @@
   "resolved" "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.1.2.tgz"
   "version" "1.1.2"
 
+"pretty-console-colors@^2.0.0":
+  "integrity" "sha512-gFKAJu0WormLGAHiJRjZAYiSZfvCNKAFu7E0gD82MtAVu0+XHGe/0zCnkWdCJgninVN8Sp9hmaDlyrqCuEDqCA=="
+  "resolved" "https://registry.npmjs.org/pretty-console-colors/-/pretty-console-colors-2.0.0.tgz"
+  "version" "2.0.0"
+
 "pretty-format@^27.0.0", "pretty-format@^27.0.2", "pretty-format@^27.5.1":
   "integrity" "sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ=="
   "resolved" "https://registry.npmjs.org/pretty-format/-/pretty-format-27.5.1.tgz"

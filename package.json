@@ -16,6 +16,7 @@
     "cosmjs-types": "^0.4.1",
     "fuzzy-search": "^3.2.1",
     "path": "^0.12.7",
+    "pretty-console-colors": "^2.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-bootstrap-drawer": "^1.0.0",
