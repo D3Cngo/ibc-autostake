@@ -35,16 +35,15 @@ class Autostake {
           return console.log('Failed to connect')
         }
 
-        if(!client.operator) return console.log('Not an operator')
-        if(!client.network.authzSupport) return console.log('No Authz support')
-        if(!data.overriden) console.log('You are using public nodes, script may fail with many delegations.')
+        if(!client.operator) return console.log('Compound bot not found on this network.')
+        if(!client.network.authzSupport) return console.log('No Authz support on this network yet.')
         if(!client.network.connected) return console.log('Could not connect to REST API')
         if(!client.signingClient.connected) return console.log('Could not connect to RPC API')
 
-        console.log('Using REST URL', client.network.restUrl)
-        console.log('Using RPC URL', client.signingClient.rpcUrl)
+        console.log('Using REST URL: ', client.network.restUrl)
+        console.log('Using RPC URL: ', client.signingClient.rpcUrl)
+        console.log('-------------------------------------------------')
 
-        console.log('Running autostake')
         await this.checkBalance(client)
 
         console.log('Finding delegators...')
@@ -68,7 +67,7 @@ class Autostake {
             }
           }
         })
-        let grantedAddresses = await mapSync(grantCalls, 100, (batch, index) => {
+        let grantedAddresses = await mapSync(grantCalls, 50, (batch, index) => {
           console.log('...batch', index + 1)
         })
         grantedAddresses = _.compact(grantedAddresses.flat())
@@ -99,7 +98,8 @@ class Autostake {
     const accounts = await wallet.getAccounts()
     const botAddress = accounts[0].address
 
-    console.log(data.prettyName, 'bot address is', botAddress)
+    console.log(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
+    console.log('-------------------------------------------------')
 
     const client = await network.signingClient(wallet)
     if(client.connected){
@@ -139,7 +139,7 @@ class Autostake {
   }
 
   getDelegations(client) {
-    return client.restClient.getAllValidatorDelegations(client.operator.address, 250, (pages) => {
+    return client.restClient.getAllValidatorDelegations(client.operator.address, 50, (pages) => {
       console.log("...batch", pages.length)
     }).catch(error => {
       console.log("ERROR:", error.message || error)

@@ -324,7 +324,7 @@ class App extends React.Component {
             <strong>At the moment the claim and re-stake transaction fees are paid for by the compound bot operator (LPX) with a donation by Operations. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         
            <p className="mb-4">
-            <strong>Every 24 hours all delegated wallets will auto-compound to ShapeShift's validator. The compound bots' addresses and balances can be checked below:</strong>
+            <strong>Every 24 hours (roughly 18:00 UTC) all delegated wallets will auto-compound to ShapeShift's validators. The compound bots' addresses and balances can be checked below:</strong>
             <ul className="mt-4">
               <li>Osmosis: osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g</li>
               <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6</li>
