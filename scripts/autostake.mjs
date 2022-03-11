@@ -2,7 +2,7 @@ import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
 import Network from '../src/utils/Network.mjs'
 import Operator from '../src/utils/Operator.mjs'
 import {mapSync, executeSync, overrideNetworks} from '../src/utils/Helpers.mjs'
-import 'pretty-console-colors';
+import '../src/utils/PrettyLog'
 
 import {
   coin
