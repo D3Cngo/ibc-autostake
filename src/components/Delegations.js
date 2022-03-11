@@ -20,6 +20,10 @@ import {
   CheckCircle, XCircle
 } from 'react-bootstrap-icons'
 
+function parseCommissionRate(validator) {
+  return parseInt(validator.commission.commissionRates.rate) / 1000000000000000000
+}
+
 class Delegations extends React.Component {
   constructor(props) {
     super(props);
@@ -59,6 +63,8 @@ class Delegations extends React.Component {
 
   refresh(){
     this.getRewards()
+    this.calculateApy();
+
     this.refreshInterval()
     if(this.props.operators.length){
       this.getGrants()
@@ -88,6 +94,30 @@ class Delegations extends React.Component {
           }
         }
       )
+  }
+  async getInflation() { 
+    return await this.props.restClient.getInflation();
+  }
+
+  async getBlocksPerYear() { 
+    return await this.props.restClient.getBlocksPerYear()
+  }
+
+  async calculateApy() {
+    const inflation = await this.getInflation()
+    const blocksPerYear = await this.getBlocksPerYear();
+    const periodPerYear = 365;
+      const { validators } = this.props;
+      let validatorApy = {};
+      for (const [address, validator] of Object.entries(validators)) {
+        const chainApr = (1 + inflation / blocksPerYear) ** blocksPerYear - 1;
+        const realApr = chainApr * (1 - parseCommissionRate(validator));
+        const apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
+        console.log( address, chainApr, realApr, apy);
+        validatorApy[address] = apy;
+      }
+      this.setState({ validatorApy })
+
   }
 
   getGrants() {
@@ -291,8 +321,9 @@ class Delegations extends React.Component {
               <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a REStake operator" />
             )}
           </td>
-          <td className="d-none d-lg-table-cell">{validator.commission.commission_rates.rate * 100}%</td>
-          <td className="d-none d-lg-table-cell"></td>
+          <td className="d-none d-lg-table-cell">{parseCommissionRate(validator)*100}%</td>
+          <td className="d-none d-lg-table-cell">{this.state.validatorApy ? ( !isNaN(this.state.validatorApy[validatorAddress]) ? (this.state.validatorApy[validatorAddress] *100).toFixed(2).toString() + " %" : ""): ""}</td>
+     
           <td className="d-none d-sm-table-cell">
             <Coins coins={delegationBalance} decimals={this.props.network.data.decimals} />
           </td>

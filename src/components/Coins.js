@@ -8,6 +8,7 @@ function Coins(props) {
     return _.round(coins.amount / Math.pow(10, decimals), 6)
   }
 
+
   function denom(coins){
     if(!coins.denom) return
 
