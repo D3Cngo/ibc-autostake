@@ -10,7 +10,7 @@ import {
 import { MsgWithdrawDelegatorReward } from "cosmjs-types/cosmos/distribution/v1beta1/tx.js";
 import { MsgDelegate } from "cosmjs-types/cosmos/staking/v1beta1/tx.js";
 import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
-import asciify from "asciify";
+import { asciify } from "asciify";
 import fs from 'fs'
 import _ from 'lodash'
 
