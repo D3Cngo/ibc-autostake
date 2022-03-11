@@ -13,7 +13,27 @@ import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
 
 import fs from 'fs'
 import _ from 'lodash'
-import chalk from 'chalk'
+
+const colors = {
+  Reset: "\x1b[0m",
+  Red: "\x1b[31m",
+  Green: "\x1b[32m",
+  Yellow: "\x1b[33m"
+}
+const infoLog = console.info;
+const logLog = console.log;
+const warnLog = console.warn;
+const errorLog = console.error;
+
+function formatMessage(arg, type, emoji, title) {
+  const copyArgs = Array.prototype.slice.call(arg);
+  copyArgs.unshift(`🕐 ${formatDate()} ${colors[type]}${emoji} [${title}]${colors.Reset}`);
+  return copyArgs;
+}
+console.log = function () { logLog.apply(null, formatMessage(arguments, 'Reset', '   ', 'LOG')); };
+console.info = function () { infoLog.apply(null, formatMessage(arguments, 'Green', '☕️', 'INFO')); };
+console.warn = function () { warnLog.apply(null, formatMessage(arguments, 'Yellow', '⚠️ ', 'WARN')); };
+console.error = function () { errorLog.apply(null, formatMessage(arguments, 'Red', '⁉️', 'ERROR')); };
 
 class Autostake {
   constructor(){
@@ -33,7 +53,7 @@ class Autostake {
         try {
           client = await this.getClient(data)
         } catch (error) {
-          return console.log(chalk.red('Failed to connect'))
+          return console.error('Failed to connect')
         }
 
         if(!client.operator) return console.log('Compound bot not found on this network.')
@@ -41,8 +61,8 @@ class Autostake {
         if(!client.network.connected) return console.log('Could not connect to REST API')
         if(!client.signingClient.connected) return console.log('Could not connect to RPC API')
 
-        console.log(chalk.yellow('Using REST URL: ', client.network.restUrl))
-        console.log(chalk.yellow('Using RPC URL: ', client.signingClient.rpcUrl))
+        console.info('Using REST URL: ', client.network.restUrl)
+        console.info('Using RPC URL: ', client.signingClient.rpcUrl)
         console.log('------------------------------------------------------------------------')
 
         await this.checkBalance(client)
@@ -58,7 +78,7 @@ class Autostake {
           })
         })
 
-        console.log("\x1b[31m Checking", addresses.length, "delegators for grants...")
+        console.log("Checking", addresses.length, "delegators for grants...")
         let grantCalls = addresses.map(item => {
           return async () => {
             try {
