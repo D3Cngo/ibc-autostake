@@ -59,6 +59,11 @@ class Delegations extends React.Component {
 
   refresh(){
     this.getRewards()
+<<<<<<< HEAD
+=======
+    this.calculateApy();
+
+>>>>>>> parent of 4f4c996 (Merge branch 'main' of https://github.com/D3Consortium/ibc-autostake)
     this.refreshInterval()
     if(this.props.operators.length){
       this.getGrants()
