@@ -59,7 +59,7 @@ class Autostake {
         try {
           client = await this.getClient(data)
         } catch (error) {
-          return console.error('Failed to connect')
+          return console.error('Failed to connect: ', error)
         }
 
         if(!client.operator) return console.warn('Compound bot not found on this network.')
