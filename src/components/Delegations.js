@@ -87,108 +87,7 @@ class Delegations extends React.Component {
             if(!hideError) this.setState({ error: 'Failed to get rewards. Please refresh' });
           }
         }
-<<<<<<< HEAD
-      );
-  }
-
-  async getOsmosisInflation() {
-    const osmosisParams = await axios.get(
-      this.props.network.restUrl + "/osmosis/mint/v1beta1/params"
-    );
-    const osmosisEpoch = await axios.get(
-      this.props.network.restUrl + "/osmosis/epochs/v1beta1/epochs"
-    );
-    const epochProvisions = await axios.get(
-      this.props.network.restUrl + "/osmosis/mint/v1beta1/epoch_provisions"
-    );
-    const pool = await axios.get(
-      this.props.network.restUrl + "/cosmos/staking/v1beta1/pool"
-    );
-    const total = await axios.get(
-      this.props.network.restUrl + "/bank/total/" + this.props.network.denom
-    );
-    let data = {
-      params: osmosisParams.data.params,
-      epoch: osmosisEpoch.data.epochs,
-      provisions: epochProvisions.data.epoch_provisions,
-      total: parseInt(total.data.result.amount),
-      bonded_tokens: parseInt(pool.data.pool.bonded_tokens),
-    };
-    const mintingEpochProvision =
-      parseFloat(data.params.distribution_proportions.staking) *
-      data.provisions;
-    const epochDuration = duration(data.epoch, data.params.epoch_identifier);
-    const yearMintingProvision =
-      (mintingEpochProvision * (365 * 24 * 3600)) / epochDuration;
-    const dec = yearMintingProvision / data.total;
-    const ratio = data.bonded_tokens / data.total;
-    return dec / ratio;
-  }
-
-  async getInflation() {
-    if (this.props.network.chainId.startsWith("osmosis")) {
-      return this.getOsmosisInflation();
-    } else if (this.props.network.chainId.startsWith("sifchain")) {
-      let inflation = await axios.get(
-        "https://data.sifchain.finance/beta/validator/stakingRewards"
-      );
-      return inflation.data.rate;
-    } else {
-      return await this.props.restClient.getInflation();
-    }
-  }
-
-  async calculateApy() {
-    if (this.props.network.chainId.startsWith("juno")) {
-      const params = await axios.get(
-        this.props.network.restUrl + "/cosmos/mint/v1beta1/params"
-      );
-    }
-    const { validators } = this.props;
-    const periodPerYear = 365;
-    if (this.props.network.chainId.startsWith("osmosis")) {
-      const chainApr = await this.getInflation();
-      let validatorApy = {};
-      for (const [address, validator] of Object.entries(validators)) {
-        const realApr = chainApr * (1 - parseCommissionRate(validator));
-        const apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
-        validatorApy[address] = apy;
-      }
-      this.setState({ validatorApy });
-    } else if (this.props.network.chainId.startsWith("sifchain")) {
-      const chainApr = await this.getInflation();
-      let validatorApy = {};
-      for (const [address, validator] of Object.entries(validators)) {
-        const realApr = chainApr * (1 - parseCommissionRate(validator));
-        const apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
-        //console.log(chainApr, realApr, apy);
-        validatorApy[address] = apy;
-      }
-      this.setState({ validatorApy });
-    } else {
-      const total = await axios.get(
-        this.props.network.restUrl + "/bank/total/" + this.props.network.denom
-      );
-      const pool = await axios.get(
-        this.props.network.restUrl + "/cosmos/staking/v1beta1/pool"
-      );
-      const bondedTokens = parseInt(pool.data.pool.bonded_tokens);
-      const totalSupply = parseInt(total.data.result.amount);
-
-      const ratio = bondedTokens / totalSupply;
-      const inflation = await this.getInflation();
-      const chainApr = inflation / ratio;
-      let validatorApy = {};
-      for (const [address, validator] of Object.entries(validators)) {
-        const realApr = chainApr * (1 - parseCommissionRate(validator));
-        const apy = (1 + realApr / periodPerYear) ** periodPerYear - 1;
-        validatorApy[address] = apy;
-      }
-      this.setState({ validatorApy });
-    }
-=======
       )
->>>>>>> parent of e0c74ac (a)
   }
 
   getGrants() {
@@ -387,17 +286,9 @@ class Delegations extends React.Component {
                   setError={this.setError} />
               )
             ) : (
-<<<<<<< HEAD
-              <TooltipIcon
-                icon={<XCircle className="opacity-50" />}
-                identifier={validatorAddress}
-                tooltip="This validator is not a REStake operator"
-              />
-=======
               <TooltipIcon icon={<CheckCircle className="text-success" />} identifier={validatorAddress} tooltip="This validator can auto-compound your rewards" />
             ) : (
-              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a REStake operator" />
->>>>>>> parent of e0c74ac (a)
+              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a operator" />
             )}
           </td>
           <td className="d-none d-lg-table-cell">{validator.commission.commission_rates.rate * 100}%</td>
@@ -471,19 +362,10 @@ class Delegations extends React.Component {
                   </Dropdown>
                 ) : (
                   <Delegate
-<<<<<<< HEAD
                     button={true}
                     variant="primary"
                     size="sm"
-<<<<<<< HEAD
                     tooltip="Delegate to enable daily compounding"
-=======
-                    button={true} variant="primary" size="sm"
-                    tooltip='Delegate to enable auto-compounding'
->>>>>>> parent of e0c74ac (a)
-=======
-                    tooltip="Delegate to enable REStake"
->>>>>>> parent of 7de0554 (de)
                     network={this.props.network}
                     address={this.props.address}
                     validator={validator}
@@ -519,31 +401,6 @@ class Delegations extends React.Component {
 
     const alerts = (
       <>
-<<<<<<< HEAD
-        {this.state.authzMissing && (
-          <AlertMessage variant="warning" dismissible={false}>
-            {this.props.network.prettyName} doesn't support Authz just yet. You
-            can manually restake for now and REStake is ready when support is
-            enabled
-          </AlertMessage>
-        )}
-        {!this.state.authzMissing && !this.props.operators.length && (
-          <AlertMessage
-            variant="warning"
-            message="There are no REStake operators for this network yet. You can compound manually, or check the About section to run one yourself"
-            dismissible={false}
-          />
-        )}
-        {!this.state.authzMissing &&
-          this.props.operators.length > 0 &&
-          this.state.isNanoLedger && (
-            <AlertMessage
-              variant="warning"
-              message="Ledger devices are unable to send authz transactions right now. We will support them as soon as possible, and you can manually restake for now."
-              dismissible={false}
-            />
-          )}
-=======
         {this.state.authzMissing &&
         <AlertMessage variant="warning" dismissible={false}>
           {this.props.network.prettyName} doesn't support Authz just yet. You can manually restake for now and REStake is ready when support is enabled
@@ -555,7 +412,6 @@ class Delegations extends React.Component {
         {!this.state.authzMissing && this.props.operators.length > 0 && this.state.isNanoLedger &&
           <AlertMessage variant="warning" message="Ledger devices are unable to send authz transactions right now. We will support them as soon as possible, and you can manually restake for now." dismissible={false} />
         }
->>>>>>> parent of e0c74ac (a)
         <AlertMessage message={this.state.error} />
       </>
     )
@@ -565,14 +421,7 @@ class Delegations extends React.Component {
         <>
           {alerts}
           <div className="text-center">
-<<<<<<< HEAD
-            <p>
-              There are no REStake operators for this network yet. You can
-              delegate to other validators in the meantime.
-            </p>
-=======
             <p>There are no operators for this network yet. You can delegate to other validators in the meantime.</p>
->>>>>>> parent of e0c74ac (a)
             <Delegate
               button={true}
               variant="primary"
