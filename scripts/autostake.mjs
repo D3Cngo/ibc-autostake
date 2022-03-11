@@ -10,7 +10,6 @@ import {
 import { MsgWithdrawDelegatorReward } from "cosmjs-types/cosmos/distribution/v1beta1/tx.js";
 import { MsgDelegate } from "cosmjs-types/cosmos/staking/v1beta1/tx.js";
 import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
-import asciify  from "asciify";
 import fs from 'fs'
 import _ from 'lodash'
 
@@ -24,12 +23,12 @@ const infoLog = console.info;
 const logLog = console.log;
 const warnLog = console.warn;
 const errorLog = console.error;
+
 function formatDate() {
   const date = new Date();
   return String(date.getHours()).padStart(2, '0')
          + ':' + String(date.getMinutes()).padStart(2, '0')
-         + ':' + String(date.getSeconds()).padStart(2, '0')
-         + ':' + String(date.getMilliseconds()).padStart(3, '0');
+         + ':' + String(date.getSeconds()).padStart(2, '0');
 }
 
 function formatMessage(arg, type, emoji, title) {
@@ -85,6 +84,7 @@ class Autostake {
           })
         })
 
+        console.log('------------------------------------------------------------------------')
         console.info("Checking", addresses.length, "delegators for grants...")
         let grantCalls = addresses.map(item => {
           return async () => {
@@ -101,6 +101,7 @@ class Autostake {
         })
         grantedAddresses = _.compact(grantedAddresses.flat())
 
+        console.log('------------------------------------------------------------------------')
         console.info("Found", grantedAddresses.length, "delegators with valid grants...")
         let calls = _.compact(grantedAddresses).map(item => {
           return async () => {
@@ -129,7 +130,7 @@ class Autostake {
     asciify(data.prettyName, function(err, res){ console.log(res) });
 
     console.log('------------------------------------------------------------------------')
-    console.info(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
+    console.info(data.prettyName, ' | 🤖 - ', botAddress)
     console.log('------------------------------------------------------------------------')
 
     const client = await network.signingClient(wallet)
@@ -204,7 +205,7 @@ class Autostake {
     const perValidatorReward = parseInt(totalRewards / validators.length)
 
     if(perValidatorReward < client.operator.data.minimumReward){
-      console.warn(address, perValidatorReward, client.network.denom, 'reward is too low, skipping')
+      console.warn(address, perValidatorReward, client.network.denom, 'claim reward below threshold, skipping...')
       return
     }
 
