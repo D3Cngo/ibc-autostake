@@ -34,7 +34,7 @@ function formatDate() {
 
 function formatMessage(arg, type, emoji, title) {
   const copyArgs = Array.prototype.slice.call(arg);
-  copyArgs.unshift(`🕐  ${formatDate()} ${colors}${emoji} [${title}]${colors.Reset}`);
+  copyArgs.unshift(`🕐  ${formatDate()} ${type}${emoji} [${title}]${colors.Reset}`);
   return copyArgs;
 }
 console.log = function () { logLog.apply(null, formatMessage(arguments, colors.Reset, '   ', 'LOG')); };
