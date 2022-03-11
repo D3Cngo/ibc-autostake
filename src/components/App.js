@@ -289,7 +289,6 @@ class App extends React.Component {
           </Col>
           <Col xs={12} md={9} xl={7}>
           <div className="mb-5 px-4">
-          <p className="lead fs-3 text-center mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
           <AlertMessage message={this.state.error} variant="danger" dismissible={false} />
           {!this.state.address && (
             !this.state.keplr
@@ -319,7 +318,8 @@ class App extends React.Component {
           </>
           }
           <hr />
-         
+          <p className="lead fs-3 text-center mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
+
           <p className="mb-4">
             <strong>At the moment the claim and re-stake transaction fees are paid for by the compound bot operator (LPX) with a donation by Operations. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         

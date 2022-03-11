@@ -23,7 +23,7 @@
       {
         "address": "osmovaloper1xf9zpq5kpxks49cg606tzd8qstaykxgt2vs0d5",
         "botAddress": "osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g",
-        "runTime": "21:00",
+        "runTime": "19:00",
         "minimumReward": 1000
       }
     ],
@@ -85,7 +85,7 @@
       {
         "address": "cosmosvaloper199mlc7fr6ll5t54w7tts7f4s0cvnqgc59nmuxf",
         "botAddress": "cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6",
-        "runTime": "21:00",
+        "runTime": "19:30",
         "minimumReward": 10000
       }
     ],
@@ -94,6 +94,7 @@
 
   {
     "name": "terra",
+    "enabled": false,
     "prettyName": "Terra",
     "chainId": "columbus-5",
     "prefix": "terra",
