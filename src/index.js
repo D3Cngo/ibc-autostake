@@ -14,7 +14,7 @@ import './index.css';
 import reportWebVitals from './utils/reportWebVitals';
 
 Bugsnag.start({
-  apiKey: process.env.BUG_API,
+  apiKey: 'dd8eaf2f5a1f2fc0d4032d855cd85906',
   plugins: [new BugsnagPluginReact()],
   enabledReleaseStages: [ 'production', 'staging' ],
   releaseStage: process.env.NODE_ENV

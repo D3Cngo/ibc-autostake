@@ -262,17 +262,18 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub"><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={this.showNetworkSelect} role="button"><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <Link to="/osmosis"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                    <Link to="/osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                </li>
+                <li>
+                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">PRE-DELEGATION</Badge></Link>
                 </li>
                 <li>
                     <a href="#"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
-                <li>
-                    <Link to="/umee"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">PRE-DELEGATION</Badge></Link>
-                </li>
+             
                 <li>
                     <a href="#"><img src={TERRA} className="chain-logo p-2"/>TERRA <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
@@ -320,7 +321,7 @@ class App extends React.Component {
           <hr />
          
           <p className="mb-4">
-            <strong>At the moment the claim and re-stake transaction fees are paid for by the compound bot operator (LPX). This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
+            <strong>At the moment the claim and re-stake transaction fees are paid for by the compound bot operator (LPX) with a donation by Operations. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         
            <p className="mb-4">
             <strong>Every 24 hours all delegated wallets will auto-compound to ShapeShift's validator. The compound bots' addresses and balances can be checked below:</strong>
@@ -329,7 +330,9 @@ class App extends React.Component {
               <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6</li>
             </ul>
           </p>
-          
+          <hr />
+          <p><b>BETA SOFTWARE: </b> Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution. </p>
+          <p>FOX Tips Always Welcome 😉 <Badge bg="secondary">0x7d35CC8b38a380b1Cd6ecA2E7cEe3da5B3bD4D3C</Badge></p>
         </div>
       
           </Col>
