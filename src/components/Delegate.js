@@ -44,7 +44,7 @@ function Delegate(props) {
     if(props.validator){
       return 'Delegate'
     }else{
-      return 'Add Validator'
+      return 'Search for Validator'
     }
   }
 
@@ -90,7 +90,55 @@ function Delegate(props) {
   return (
     <>
       {button()}
-    
+      <Modal size={selectedValidator ? '' : 'lg'} show={show} onHide={() => setShow(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {selectedValidator
+              ? (
+                <>
+                  <ValidatorImage validator={selectedValidator} imageUrl={props.getValidatorImage(props.network, selectedValidator.operator_address)} className="me-2" />
+                  <ValidatorLink validator={selectedValidator} className="ms-2" />
+                </>
+              ) : actionText()
+            }
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {!selectedValidator &&
+          <Validators
+            inflation={props.inflation}
+            blocksPerYear={ props.blocksPerYear}
+            redelegate={props.redelegate}
+            network={props.network}
+            operators={props.operators}
+            exclude={excludeValidators()}
+            validators={props.validators}
+            getValidatorImage={props.getValidatorImage}
+            delegations={props.delegations}
+            selectValidator={(selectedValidator) => setSelectedValidator(selectedValidator)} /> }
+          {selectedValidator && (
+            <>
+              <p>{selectedValidator.description.details}</p>
+              <h5 className="mb-3">
+                {props.redelegate
+                  ? <span>Redelegate from <ValidatorLink validator={props.validator} /></span>
+                  : actionText()
+                }
+              </h5>
+              <DelegateForm
+                redelegate={props.redelegate}
+                undelegate={props.undelegate}
+                network={props.network}
+                validator={props.validator}
+                selectedValidator={selectedValidator}
+                address={props.address}
+                availableBalance={props.availableBalance}
+                stargateClient={props.stargateClient}
+                onDelegate={onDelegate} />
+            </>
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 }
