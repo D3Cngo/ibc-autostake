@@ -37,10 +37,10 @@ function formatMessage(arg, type, emoji, title) {
   copyArgs.unshift(`🕐  ${formatDate()} ${type}${emoji} [${title}]${colors.Reset}`);
   return copyArgs;
 }
-console.log = function () { logLog.apply(null, formatMessage(arguments, colors.Reset, '   ', 'LOG')); };
-console.info = function () { infoLog.apply(null, formatMessage(arguments, colors.Green, '🟢  ', '\x1b[32mINFO')); };
-console.warn = function () { warnLog.apply(null, formatMessage(arguments, colors.Yellow, '🚧  ', '\x1b[33mWARN')); };
-console.error = function () { errorLog.apply(null, formatMessage(arguments, colors.Red, '🛑  ', '\x1b[31mERROR')); };
+console.log = function () { logLog.apply(null, formatMessage(arguments, colors.Reset, ' ➖  ', 'LOG')); };
+console.info = function () { infoLog.apply(null, formatMessage(arguments, colors.Green, ' 🟢  ', 'INFO')); };
+console.warn = function () { warnLog.apply(null, formatMessage(arguments, colors.Yellow, ' 🟠  ', 'WARN')); };
+console.error = function () { errorLog.apply(null, formatMessage(arguments, colors.Red, ' 🔴  ', 'ERROR')); };
 
 class Autostake {
   constructor(){
