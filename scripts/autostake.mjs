@@ -10,7 +10,7 @@ import {
 import { MsgWithdrawDelegatorReward } from "cosmjs-types/cosmos/distribution/v1beta1/tx.js";
 import { MsgDelegate } from "cosmjs-types/cosmos/staking/v1beta1/tx.js";
 import { MsgExec } from "cosmjs-types/cosmos/authz/v1beta1/tx.js";
-
+import asciify from "asciify";
 import fs from 'fs'
 import _ from 'lodash'
 
@@ -126,6 +126,7 @@ class Autostake {
 
     const accounts = await wallet.getAccounts()
     const botAddress = accounts[0].address
+    asciify(data.prettyName, function(err, res){ console.log(res) });
 
     console.log('------------------------------------------------------------------------')
     console.info(data.prettyName, ' | Staking bot reporting for duty - ', botAddress)
