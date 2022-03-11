@@ -58,7 +58,7 @@ class Autostake {
           })
         })
 
-        console.log("Checking", addresses.length, "delegators for grants...")
+        console.log("\x1b[31m Checking", addresses.length, "delegators for grants...")
         let grantCalls = addresses.map(item => {
           return async () => {
             try {
