@@ -38,9 +38,9 @@ function formatMessage(arg, type, emoji, title) {
   return copyArgs;
 }
 console.log = function () { logLog.apply(null, formatMessage(arguments, 'Reset', '   ', 'LOG')); };
-console.info = function () { infoLog.apply(null, formatMessage(arguments, 'Green', '🟢', 'INFO')); };
-console.warn = function () { warnLog.apply(null, formatMessage(arguments, 'Yellow', '🚧 ', 'WARN')); };
-console.error = function () { errorLog.apply(null, formatMessage(arguments, 'Red', '🛑', 'ERROR')); };
+console.info = function () { infoLog.apply(null, formatMessage(arguments, 'Green', '🟢  ', 'INFO')); };
+console.warn = function () { warnLog.apply(null, formatMessage(arguments, 'Yellow', '🚧  ', 'WARN')); };
+console.error = function () { errorLog.apply(null, formatMessage(arguments, 'Red', '🛑  ', 'ERROR')); };
 
 class Autostake {
   constructor(){
