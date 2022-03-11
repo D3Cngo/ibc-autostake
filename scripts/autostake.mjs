@@ -127,7 +127,6 @@ class Autostake {
 
     const accounts = await wallet.getAccounts()
     const botAddress = accounts[0].address
-    asciify(data.prettyName, function(err, res){ console.log(res) });
 
     console.log('------------------------------------------------------------------------')
     console.info(data.prettyName, ' | 🤖 - ', botAddress)
