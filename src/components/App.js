@@ -225,12 +225,13 @@ class App extends React.Component {
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
-                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>{this.state.address}</span></span>
+                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>Connected: {this.state.address}</span></span>
               </CopyToClipboard>
             </li>
             <li className="nav-item d-none d-md-block">
               <span className="nav-link ps-4">
                 <Badge>
+                  Available Balance: 
                   <Coins
                     coins={this.state.balance}
                     decimals={this.props.network.data.decimals}
@@ -271,13 +272,13 @@ class App extends React.Component {
                     <Link to="/umee" onClick={this.showNetworkSelect}><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
                 </li>
                 <li>
                     <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
