@@ -218,7 +218,7 @@ class App extends React.Component {
       <Container fluid> 
               <header className="main-head d-flex flex-wrap justify-content-between py-3 mb-4 px-4 border-bottom">
           <div className="logo d-flex d-md-none align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
-          FOXFrens IBC
+          <h1>FOXFrens IBC</h1>
           </div>
 
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
@@ -232,7 +232,7 @@ class App extends React.Component {
           <div className="alert alert-warning d-md-none px-4" role="alert">
             Mobile support is coming soon! Hang tight. 
           </div>
-          <Col xs={12} md={3} xl={2} className="d-none d-md-block">
+          <Col xs={12} md={2} xl={2} className="d-none d-md-block">
           <div className="sidebar-wrapper">
            
             <ul className="sidebar-nav">
@@ -265,7 +265,7 @@ class App extends React.Component {
             </ul>
         </div>
           </Col>
-          <Col xs={12} md={9} xl={7}>
+          <Col xs={12} md={8} xl={7}>
           <div className="mb-5 px-4">
           {this.state.address &&
           <ul className="nav nav-pills justify-content-between mb-3">
@@ -340,7 +340,7 @@ class App extends React.Component {
         </div>
       
           </Col>
-          <Col xs={12} md={3} xl={3}>
+          <Col xs={12} md={2} xl={3}>
           <Card className="mb-3">
             
             <Card.Body> 
@@ -381,7 +381,7 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
           </a>
 
       
-          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex" href="https://app.starname.me/profile/fox*me" target="_blank"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></a>
+          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-4" href="https://app.starname.me/profile/fox*me" target="_blank"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></a>
 
           <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 

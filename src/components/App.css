@@ -70,6 +70,12 @@ header a.moniker{
   a.funding-wallet{
     display: none;
   }
+  .logo{
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.4rem;
+    align-self: self-end;
+  }
 }
 
 @media(min-width:768px) {
@@ -160,8 +166,8 @@ img.frown{
   fill: white !important;
 }
 
-li .badge {
-  margin-left: 10px;
+.sidebar-brand > li .badge {
+  margin-left: 10px !important;
 }
 
 a.funding-wallet{
