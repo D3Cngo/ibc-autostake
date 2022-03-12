@@ -265,15 +265,15 @@ class App extends React.Component {
           <Col xs={12} md={9} xl={7}>
           <div className="mb-5 px-4">
           {this.state.address &&
-          <ul className="nav nav-pills justify-content-end">
+          <ul className="nav nav-pills justify-content-between mb-3">
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
-                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}><span className="badge bg-secondary">Connected: {this.state.address}</span></span></span>
+                <span role="button"><span className={'nav-link disabled clipboard p-0' + (this.state.copied ? ' copied' : '')}><span className="badge bg-secondary">Connected: {this.state.address}</span></span></span>
               </CopyToClipboard>
             </li>
             <li className="nav-item d-none d-md-block">
-              <span className="nav-link ps-4">
+              <span className="nav-link p-0">
                 <Badge>
                   Available Balance: &nbsp;
                   <Coins
