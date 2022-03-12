@@ -271,13 +271,13 @@ class App extends React.Component {
                     <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <a href="/"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="/"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="/"><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
+                    <a href="/" onClick={() => this.setState({showAbout: true})}><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
                 </li>
                 <li>
                     <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
@@ -332,7 +332,6 @@ class App extends React.Component {
           </p>
           <hr />
           <p><b>BETA SOFTWARE: </b> Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution. </p>
-          <p>FOX Tips Always Welcome 😉 <Badge bg="secondary">0x7d35CC8b38a380b1Cd6ecA2E7cEe3da5B3bD4D3C</Badge></p>
         </div>
       
           </Col>
@@ -379,6 +378,8 @@ and <span class="badge bg-secondary">Delegate</span> only to the validator that 
       
 
           <p className="col-md-6 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
+          <p>Tips ❤ <Badge bg="secondary">0x7d35CC8b38a380b1Cd6ecA2E7cEe3da5B3bD4D3C</Badge></p>
+
           <span className="d-none d-sm-inline me-1">Built with ❤&nbsp;</span> by LPX | Forked from and Inspired by ECO Stake 🌱
           </p>
         </footer>
