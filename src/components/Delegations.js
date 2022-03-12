@@ -447,7 +447,7 @@ class Delegations extends React.Component {
             <thead>
               <tr>
                 <th colSpan={2}>Validator</th>
-                <th className="d-none d-sm-table-cell text-center">REStake</th>
+                <th className="d-none d-sm-table-cell text-center">Auto-Stake</th>
                 <th className="d-none d-lg-table-cell">Commission</th>
                 <th className="d-none d-lg-table-cell">APY</th>
                 <th className="d-none d-sm-table-cell">Delegation</th>
