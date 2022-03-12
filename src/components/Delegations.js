@@ -201,6 +201,9 @@ class Delegations extends React.Component {
 
   operatorBotAddresses(){
     return this.props.operators.map(operator => operator.botAddress)
+  }  
+  operatorAPY(){
+    return this.props.operators.map(operator => operator.compoundedAPY)
   }
 
   orderedOperators(){
@@ -292,7 +295,7 @@ class Delegations extends React.Component {
             )}
           </td>
           <td className="d-none d-lg-table-cell">{validator.commission.commission_rates.rate * 100}%</td>
-          <td className="d-none d-lg-table-cell">{this.props.operators.data.compoundedAPY}</td>
+          <td className="d-none d-lg-table-cell">{this.operatorAPY([validatorAddress])}</td>
           <td className="d-none d-sm-table-cell">
             <Coins coins={delegationBalance} decimals={this.props.network.data.decimals} />
           </td>
