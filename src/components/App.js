@@ -268,16 +268,16 @@ class App extends React.Component {
                     <Link to="/osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">ACTIVE</Badge></Link>
+                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <a href="#"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="/"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="/"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#"><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
+                    <a href="/"><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
                 </li>
                 <li>
                     <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
