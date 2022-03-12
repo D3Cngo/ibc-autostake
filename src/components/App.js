@@ -225,13 +225,13 @@ class App extends React.Component {
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
-                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>Connected: {this.state.address}</span></span>
+                <span role="button badge bg-secondary"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>Connected: {this.state.address}</span></span>
               </CopyToClipboard>
             </li>
             <li className="nav-item d-none d-md-block">
               <span className="nav-link ps-4">
                 <Badge>
-                  Available Balance: 
+                  Available Balance: &nbsp;
                   <Coins
                     coins={this.state.balance}
                     decimals={this.props.network.data.decimals}
