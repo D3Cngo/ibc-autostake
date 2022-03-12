@@ -262,13 +262,13 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={this.showNetworkSelect} role="button"><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={this.showNetworkSelect}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <Link to="/osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                    <Link to="/osmosis" onClick={this.showNetworkSelect}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
+                    <Link to="/umee" onClick={this.showNetworkSelect}><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
                     <a href="/" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
@@ -376,7 +376,7 @@ and <span class="badge bg-secondary">Delegate</span> only to the validator that 
           </a>
 
       
-          <p className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex">Tips <Badge bg="secondary">0xDA0DA024F0f43837a9a6B3cecCb22F40b2641CC9</Badge></p>
+          <p className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></p>
 
           <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
