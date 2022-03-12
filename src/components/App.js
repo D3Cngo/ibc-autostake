@@ -225,7 +225,7 @@ class App extends React.Component {
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
-                <span role="button badge bg-secondary"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>Connected: {this.state.address}</span></span>
+                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}><span className="badge bg-secondary">Connected: {this.state.address}</span></span></span>
               </CopyToClipboard>
             </li>
             <li className="nav-item d-none d-md-block">
@@ -263,7 +263,7 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={this.showNetworkSelect}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={this.setState({showNetworkSelect: true, network:'cosmoshub'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
                     <Link to="/osmosis" onClick={this.showNetworkSelect}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
