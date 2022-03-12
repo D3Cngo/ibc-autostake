@@ -166,8 +166,8 @@ img.frown{
   fill: white !important;
 }
 
-.sidebar-brand > li .badge {
-  margin-left: 10px !important;
+ul.sidebar-nav .badge {
+  margin-left: 10px;
 }
 
 a.funding-wallet{
