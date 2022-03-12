@@ -376,9 +376,9 @@ and <span class="badge bg-secondary">Delegate</span> only to the validator that 
           </a>
 
       
+          <p className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex">Tips <Badge bg="secondary">0xDA0DA024F0f43837a9a6B3cecCb22F40b2641CC9</Badge></p>
 
-          <p className="col-md-6 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
-          <p>Tips ❤ <Badge bg="secondary">0x7d35CC8b38a380b1Cd6ecA2E7cEe3da5B3bD4D3C</Badge></p>
+          <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
           <span className="d-none d-sm-inline me-1">Built with ❤&nbsp;</span> by LPX | Forked from and Inspired by ECO Stake 🌱
           </p>
