@@ -220,32 +220,7 @@ class App extends React.Component {
           <div className="logo d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
         
           </div>
-          {this.state.address &&
-          <ul className="nav nav-pills justify-content-end">
-            <li className="nav-item d-none d-xl-block">
-              <CopyToClipboard text={this.state.address}
-                onCopy={() => this.setCopied()}>
-                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}><span className="badge bg-secondary">Connected: {this.state.address}</span></span></span>
-              </CopyToClipboard>
-            </li>
-            <li className="nav-item d-none d-md-block">
-              <span className="nav-link ps-4">
-                <Badge>
-                  Available Balance: &nbsp;
-                  <Coins
-                    coins={this.state.balance}
-                    decimals={this.props.network.data.decimals}
-                  />
-                </Badge>
-              </span>
-            </li>
-            {false && (
-              <li className="nav-item ps-4">
-                <Button onClick={() => this.disconnect()} className="nav-link btn-link" aria-current="page">Disconnect</Button>
-              </li>
-            )}
-          </ul>
-          }
+
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
             <NetworkSelect show={this.state.showNetworkSelect} onHide={() => {this.setState({showNetworkSelect: false})}} networks={this.props.networks}
               network={this.props.network}
@@ -289,7 +264,32 @@ class App extends React.Component {
           </Col>
           <Col xs={12} md={9} xl={7}>
           <div className="mb-5 px-4">
-          <p className="lead fs-3 text-center mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
+          {this.state.address &&
+          <ul className="nav nav-pills justify-content-end">
+            <li className="nav-item d-none d-xl-block">
+              <CopyToClipboard text={this.state.address}
+                onCopy={() => this.setCopied()}>
+                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}><span className="badge bg-secondary">Connected: {this.state.address}</span></span></span>
+              </CopyToClipboard>
+            </li>
+            <li className="nav-item d-none d-md-block">
+              <span className="nav-link ps-4">
+                <Badge>
+                  Available Balance: &nbsp;
+                  <Coins
+                    coins={this.state.balance}
+                    decimals={this.props.network.data.decimals}
+                  />
+                </Badge>
+              </span>
+            </li>
+            {false && (
+              <li className="nav-item ps-4">
+                <Button onClick={() => this.disconnect()} className="nav-link btn-link" aria-current="page">Disconnect</Button>
+              </li>
+            )}
+          </ul>
+          }
           <AlertMessage message={this.state.error} variant="danger" dismissible={false} />
           {!this.state.address && (
             !this.state.keplr
@@ -319,7 +319,8 @@ class App extends React.Component {
           </>
           }
           <hr />
-         
+          <p className="lead fs-3 text-center mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
+
           <p className="mb-4">
             <strong>The claim and re-stake transaction fees are paid for by the bot operator and is intended for use by anyone looking to compound staking rewards for a higher APY while helping ShapeShift DAO. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         
