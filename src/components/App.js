@@ -326,9 +326,9 @@ class App extends React.Component {
            <p className="mb-4">
             <strong>Every 24 hours (spread across 17:00 - 18:00 UTC) all delegated wallets will auto-compound to ShapeShift's validators. The compound bots' addresses and balances can be checked below:</strong>
             <ul className="mt-4">
-              <li>Osmosis: osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g <a href="https://www.mintscan.io/osmosis/account/osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g">&nbsp;📋</a></li>
-              <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6 <a href="https://www.mintscan.io/cosmos/account/cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6">&nbsp;📋</a></li>
-              <li>Umee: umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg <a href="https://www.mintscan.io/umee/account/umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg">&nbsp;📋</a></li>
+              <li>Osmosis: osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/osmosis/account/osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g">&nbsp;↪</a></li>
+              <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6 <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/cosmos/account/cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6">&nbsp;↪</a></li>
+              <li>Umee: umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/umee/account/umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg">&nbsp;↪</a></li>
             </ul>
           </p>
           <hr />

@@ -152,3 +152,7 @@ img.frown{
 li .badge {
   margin-left: 10px;
 }
+
+a.funding-wallet{
+  text-decoration: none;
+}
