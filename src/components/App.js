@@ -229,8 +229,11 @@ class App extends React.Component {
           </div>
         </header>
           <Row>
-          <Col xs={3} md={3} xl={2}>
-          <div className="sidebar-wrapper">
+          <div className="alert alert-warning d-md-none" role="alert">
+            Mobile support is coming soon! Hang tight. 
+          </div>
+          <Col xs={12} md={3} xl={2}>
+          <div className="sidebar-wrapper d-sm-none d-md-block">
            
             <ul className="sidebar-nav">
             <div className="sidebar-brand">
@@ -319,14 +322,14 @@ class App extends React.Component {
           </>
           }
           <hr />
-          <p className="lead fs-3 text-center mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
+          <p className="lead fs-3 mt-2 mb-3">FOXFrens IBC allows <strong>auto-compounding</strong> your <strong onClick={this.showNetworkSelect} className="text-decoration-underline" role="button">{this.props.network.prettyName}</strong> staking rewards.</p>
 
           <p className="mb-4">
             <strong>The claim and re-stake transaction fees are paid for by the bot operator and is intended for use by anyone looking to compound staking rewards for a higher APY while helping ShapeShift DAO. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         
            <p className="mb-4">
             <strong>Every 24 hours (spread across 17:00 - 18:00 UTC) all delegated wallets will auto-compound to ShapeShift's validators. The compound bots' addresses and balances can be checked below:</strong>
-            <ul className="mt-4">
+            <ul className="mt-4 bot-addresses">
               <li>Osmosis: osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/osmosis/account/osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g">&nbsp;↪</a></li>
               <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6 <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/cosmos/account/cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6">&nbsp;↪</a></li>
               <li>Umee: umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/umee/account/umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg">&nbsp;↪</a></li>

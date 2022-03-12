@@ -89,7 +89,7 @@
         "botAddress": "cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6",
         "runTime": "21:00",
         "minimumReward": 10000,
-        "compoundedAPY": "106.1%"
+        "compoundedAPY": "17.7%"
       }
     ],
     "authzSupport": true
@@ -188,9 +188,9 @@
       {
         "address": "umeevaloper1gvt9l5tshr0fp8ksl2tuem584z69eyvt9m8yh6",
         "botAddress": "umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg",
-        "runTime": "10:00",
+        "runTime": "17:00",
         "minimumReward": 10000,
-        "compoundedAPY": "106.1%"
+        "compoundedAPY": "198.4%"
       }
     ],
     "authzSupport": true

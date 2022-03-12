@@ -156,3 +156,7 @@ li .badge {
 a.funding-wallet{
   text-decoration: none;
 }
+
+ul.bot-addresses{
+  font-size:90%;
+}
