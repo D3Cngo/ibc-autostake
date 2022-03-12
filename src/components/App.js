@@ -229,11 +229,11 @@ class App extends React.Component {
           </div>
         </header>
           <Row>
-          <div className="alert alert-warning d-md-none" role="alert">
+          <div className="alert alert-warning d-md-none ps-4" role="alert">
             Mobile support is coming soon! Hang tight. 
           </div>
-          <Col xs={12} md={3} xl={2}>
-          <div className="sidebar-wrapper d-sm-none d-md-block">
+          <Col xs={12} md={3} xl={2} className="d-none d-md-block">
+          <div className="sidebar-wrapper">
            
             <ul className="sidebar-nav">
             <div className="sidebar-brand">
