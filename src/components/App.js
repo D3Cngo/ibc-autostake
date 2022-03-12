@@ -376,7 +376,7 @@ and <span class="badge bg-secondary">Delegate</span> only to the validator that 
           </a>
 
       
-          <p className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></p>
+          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex" href="https://app.starname.me/profile/fox*me" target="_blank"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></a>
 
           <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
