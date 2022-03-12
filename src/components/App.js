@@ -217,8 +217,8 @@ class App extends React.Component {
     return (
       <Container fluid> 
               <header className="main-head d-flex flex-wrap justify-content-between py-3 mb-4 px-4 border-bottom">
-          <div className="logo d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
-        
+          <div className="logo d-flex d-md-none align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
+          FOXFrens IBC
           </div>
 
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
@@ -229,7 +229,7 @@ class App extends React.Component {
           </div>
         </header>
           <Row>
-          <div className="alert alert-warning d-md-none ps-4" role="alert">
+          <div className="alert alert-warning d-md-none px-4" role="alert">
             Mobile support is coming soon! Hang tight. 
           </div>
           <Col xs={12} md={3} xl={2} className="d-none d-md-block">
