@@ -94,6 +94,7 @@
 
   {
     "name": "terra",
+    "enabled": false,
     "prettyName": "Terra",
     "chainId": "columbus-5",
     "prefix": "terra",
@@ -149,8 +150,8 @@
     "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/evmos.png",
     "operators": [
       {
-        "address": "evmosvaloper1shvcjzhcxau6qtlz9w82a646ecwp4hq7ayqt0w",
-        "botAddress": "evmos194ytn50yhh67rdha8akhs7c6zulnz4n2tkcdkt",
+        "address": "evmosvaloper18gjfm7hfz8xys60fa2fesdt4a5fxpsdxvzltee",
+        "botAddress": "evmos1r4zkyawh6k3dxn9c9qkvxh02lv7xs2e08zz427",
         "runTime": "21:00",
         "minimumReward": 1000
       }
@@ -208,12 +209,6 @@
     "operators": [
       {
         "address": "lumvaloper1p4qz6gqr3esugvm9n49jl2rz0zhup7ww286t65",
-        "botAddress": "lum19pqrxrl6n0g0mky4y79hlfzchprmsp5jxdyjew",
-        "runTime": "21:00",
-        "minimumReward": 1000
-      },
-      {
-        "address": "lumvaloper1068lx20jqswpwtykfezssdkn524kqlmlqjeqpa",
         "botAddress": "lum19pqrxrl6n0g0mky4y79hlfzchprmsp5jxdyjew",
         "runTime": "21:00",
         "minimumReward": 1000
