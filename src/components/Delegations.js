@@ -201,6 +201,9 @@ class Delegations extends React.Component {
 
   operatorBotAddresses(){
     return this.props.operators.map(operator => operator.botAddress)
+  }  
+  operatorAPY(){
+    return this.props.operators.map(operator => operator.compoundedAPY)
   }
 
   orderedOperators(){
@@ -288,11 +291,11 @@ class Delegations extends React.Component {
             ) : (
               <TooltipIcon icon={<CheckCircle className="text-success" />} identifier={validatorAddress} tooltip="This validator can auto-compound your rewards" />
             ) : (
-              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a REStake operator" />
+              <TooltipIcon icon={<XCircle className="opacity-50" />} identifier={validatorAddress} tooltip="This validator is not a operator" />
             )}
           </td>
           <td className="d-none d-lg-table-cell">{validator.commission.commission_rates.rate * 100}%</td>
-          <td className="d-none d-lg-table-cell"></td>
+          <td className="d-none d-lg-table-cell">{this.props.operators[0].data.compoundedAPY}*</td>
           <td className="d-none d-sm-table-cell">
             <Coins coins={delegationBalance} decimals={this.props.network.data.decimals} />
           </td>
@@ -362,8 +365,10 @@ class Delegations extends React.Component {
                   </Dropdown>
                 ) : (
                   <Delegate
-                    button={true} variant="primary" size="sm"
-                    tooltip='Delegate to enable auto-compounding'
+                    button={true}
+                    variant="primary"
+                    size="sm"
+                    tooltip="Delegate to enable daily compounding"
                     network={this.props.network}
                     address={this.props.address}
                     validator={validator}
@@ -401,11 +406,11 @@ class Delegations extends React.Component {
       <>
         {this.state.authzMissing &&
         <AlertMessage variant="warning" dismissible={false}>
-          {this.props.network.prettyName} doesn't support Authz just yet. You can manually restake for now and REStake is ready when support is enabled
+          {this.props.network.prettyName} doesn't support Authz just yet. You can manually restake for now.
         </AlertMessage>
         }
         {!this.state.authzMissing && !this.props.operators.length &&
-          <AlertMessage variant="warning" message="There are no REStake operators for this network yet. You can compound manually, or check the About section to run one yourself" dismissible={false} />
+          <AlertMessage variant="warning" message="There are no operators for this network yet. You can compound manually, or check the About section to run one yourself" dismissible={false} />
         }
         {!this.state.authzMissing && this.props.operators.length > 0 && this.state.isNanoLedger &&
           <AlertMessage variant="warning" message="Ledger devices are unable to send authz transactions right now. We will support them as soon as possible, and you can manually restake for now." dismissible={false} />
@@ -445,7 +450,7 @@ class Delegations extends React.Component {
             <thead>
               <tr>
                 <th colSpan={2}>Validator</th>
-                <th className="d-none d-sm-table-cell text-center">Auto-Compound</th>
+                <th className="d-none d-sm-table-cell text-center">Auto-Stake</th>
                 <th className="d-none d-lg-table-cell">Commission</th>
                 <th className="d-none d-lg-table-cell">APY</th>
                 <th className="d-none d-sm-table-cell">Delegation</th>
@@ -470,9 +475,7 @@ class Delegations extends React.Component {
         )}
         <div className="row">
           <div className="col">
-          <Button className="btn-secondary mr-5" onClick={this.showNetworkSelect}>
-          {this.props.network.prettyName}
-                    </Button>
+          <span className="muted small">* APY shown is a rough estimate and is subject to many external factors such as inflation rates, gas fees, epoch vs block, etc.</span>
                               </div>
           <div className="col">
             <div className="d-grid gap-2 d-md-flex justify-content-end">

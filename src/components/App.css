@@ -59,7 +59,24 @@ header a.moniker{
 .sidebar-nav li a:active, .sidebar-nav li a:focus {
   text-decoration: none;
 }
-
+@media only screen and (max-width: 576px) {
+ .sidebar-wrapper {
+    display:none;
+  }
+  .bot-addresses{
+    font-size:0.8rem;
+    overflow-x: clip;
+  }
+  a.funding-wallet{
+    display: none;
+  }
+  .logo{
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 1.4rem;
+    align-self: self-end;
+  }
+}
 
 @media(min-width:768px) {
   #wrapper {
@@ -149,6 +166,14 @@ img.frown{
   fill: white !important;
 }
 
-li .badge {
+ul.sidebar-nav .badge {
   margin-left: 10px;
+}
+
+a.funding-wallet{
+  text-decoration: none;
+}
+
+ul.bot-addresses{
+  font-size:90%;
 }
