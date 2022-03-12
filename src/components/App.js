@@ -263,7 +263,7 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={this.setState({showNetworkSelect: true})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={() => this.setState({showNetworkSelect: true})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
                     <Link to="/osmosis" onClick={this.showNetworkSelect}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
