@@ -263,7 +263,7 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={this.setState({showNetworkSelect: true, network:'cosmoshub'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={this.setNetwork({network: 'cosmoshub'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
                     <Link to="/osmosis" onClick={this.showNetworkSelect}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
@@ -345,8 +345,8 @@ class App extends React.Component {
             <Card.Text className="small">
 
               <p>The auto-compounder makes use of a new feature in Cosmos blockchains called <a href="https://docs.cosmos.network/master/modules/authz/">Authz</a>. This allows a validator (or any other wallet) to send certain <b>pre-authorized</b> transactions on your behalf.</p>
-          <p>When you authorize the compound bot, you allow the bot to create transactions with <span class="badge bg-secondary">WithdrawDelegatorReward</span>&nbsp; 
-and <span class="badge bg-secondary">Delegate</span> only to the validator that have been approved by you - personal <b>funds are never exposed, and the compounding bot cannot delegate to an unapproved validator</b>. The authorisation has been set to automatically expire after four months, and you can revoke the permissions at any time.</p>
+          <p>When you authorize the compound bot, you allow the bot to create transactions with <span className="badge bg-secondary">WithdrawDelegatorReward</span>&nbsp; 
+and <span className="badge bg-secondary">Delegate</span> only to the validator that have been approved by you - personal <b>funds are never exposed, and the compounding bot cannot delegate to an unapproved validator</b>. The authorisation has been set to automatically expire after four months, and you can revoke the permissions at any time.</p>
 <p>Most importantly, the source code is completely open source and available for viewing.</p>
           </Card.Text>
 
