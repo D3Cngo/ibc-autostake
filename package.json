@@ -1,8 +1,6 @@
 {
-  "name": "restake",
+  "name": "ibc-autostake",
   "version": "0.1.0",
-  "source": "src/index.js",
-  "main": "dist/main.js",
   "private": true,
   "dependencies": {
     "@bugsnag/js": "^7.16.1",
@@ -33,7 +31,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npx parcel src/index.html --host 0.0.0.0",
+    "start": "npx parcel src/index.html --host 0.0.0.0 --port 1337",
     "prebuild": "rm -rf dist/",
     "build": "npx parcel build src/index.html",
     "autostake": "node scripts/autostake.mjs",
