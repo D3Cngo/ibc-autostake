@@ -262,13 +262,13 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={this.showNetworkSelect} role="button"><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="cosmoshub" onClick={this.showNetworkSelect} role="button"><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
-                    <Link to="/osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                    <Link to="osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">PRE-DELEGATION</Badge></Link>
+                    <span onClick={() => navigate("/umee")} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">PRE-DELEGATION</Badge></span>
                 </li>
                 <li>
                     <a href="#"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
