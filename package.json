@@ -1,6 +1,8 @@
 {
   "name": "restake",
   "version": "0.1.0",
+  "source": "src/index.js",
+  "main": "dist/main.js",
   "private": true,
   "dependencies": {
     "@bugsnag/js": "^7.16.1",

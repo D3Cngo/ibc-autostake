@@ -241,7 +241,7 @@ class App extends React.Component {
             </div>
             
                 <li>
-                <Link to="/cosmoshub" onClick={() => this.changeNetwork({chainId: 'cosmoshub-4'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <Link to="/cosmoshub" onClick={() => this.setNetwork({chainId: 'cosmoshub-4'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
                 </li>
                 <li>
                     <Link to="/osmosis" onClick={() => this.changeNetwork({chainId: 'osmosis-1'})}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
@@ -268,7 +268,7 @@ class App extends React.Component {
           <Col xs={12} md={8} xl={7}>
           <div className="mb-5 px-4">
           {this.state.address &&
-          <ul className="nav nav-pills justify-content-between mb-3">
+          <ul className="nav nav-pills justify-content-between mb-3 fs-5">
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
