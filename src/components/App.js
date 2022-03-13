@@ -220,6 +220,7 @@ class App extends React.Component {
           <div className="logo d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
         
           </div>
+<<<<<<< Updated upstream
           {this.state.address &&
           <ul className="nav nav-pills justify-content-end">
             <li className="nav-item d-none d-xl-block">
@@ -245,6 +246,9 @@ class App extends React.Component {
             )}
           </ul>
           }
+=======
+          <div className="d-flex"></div>
+>>>>>>> Stashed changes
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
             <NetworkSelect show={this.state.showNetworkSelect} onHide={() => {this.setState({showNetworkSelect: false})}} networks={this.props.networks}
               network={this.props.network}
