@@ -222,7 +222,7 @@ class App extends React.Component {
           <div className="logo d-flex d-md-none align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
           <h1>FOXFrens IBC</h1>
           </div>
-
+          <div className="d-flex"></div>
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
             <NetworkSelect show={this.state.showNetworkSelect} onHide={() => {this.setState({showNetworkSelect: false})}} networks={this.props.networks}
               network={this.props.network}
