@@ -10,6 +10,7 @@ import {
 import NetworkFinder from './components/NetworkFinder'
 import './index.css';
 import reportWebVitals from './utils/reportWebVitals';
+import { v1 as uuidv1 } from 'uuid';
 
 
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import { withRouter } from "react-router";
+
 import Network from '../utils/Network.mjs'
 import { overrideNetworks } from '../utils/Helpers.mjs'
 import App from './App';

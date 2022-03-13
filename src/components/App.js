@@ -22,7 +22,7 @@ import {
   Nav,
   Card,
 } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import GitHubButton from 'react-github-btn'
@@ -38,6 +38,7 @@ import EVMOS from '../assets/chains/EVMOS.png'
 import TERRA from '../assets/chains/TERRA.svg'
 import FROWN from '../assets/frown.svg'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +48,7 @@ class App extends React.Component {
     this.getValidatorImage = this.getValidatorImage.bind(this);
     this.loadValidatorImages = this.loadValidatorImages.bind(this);
   }
+
 
   async componentDidMount() {
     await this.setNetwork()
@@ -240,23 +242,23 @@ class App extends React.Component {
             <img src={Logo} srcSet={`${Logo2x} 2x,`} alt="FOXFrens IBC Autos-Compounder" className="p-4"/>
             </div>
             
-                <li>
-                <Link to="/cosmoshub" onClick={() => this.setNetwork({chainId: 'cosmoshub-4'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <li role="button">
+                <NavLink to="/cosmoshub" onClick={() => this.setState({showNetworkSelect: true, setSelectedNetwork: "cosmoshub"})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></NavLink>
                 </li>
                 <li>
-                    <Link to="/osmosis" onClick={() => this.changeNetwork({chainId: 'osmosis-1'})}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                    <NavLink to="/osmosis" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></NavLink> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={() => this.changeNetwork({chainId: 'umee-1'})}><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
+                    <NavLink to="/umee" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></NavLink>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
                 </li>
                 <li>
                     <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
@@ -394,5 +396,4 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
     )
   }
 }
-
 export default App;

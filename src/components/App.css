@@ -28,7 +28,7 @@ header a.moniker{
 }
 
 .sidebar-nav>.sidebar-brand img {
-  zoom: 80%;
+  zoom: 90%;
   margin-bottom: 40px;
 }
 
@@ -176,4 +176,9 @@ a.funding-wallet{
 
 ul.bot-addresses{
   font-size:90%;
+}
+
+[aria-current]:not([aria-current="false"]) {
+  font-weight: bold;
+  color: #fff !important;
 }

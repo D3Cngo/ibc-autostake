@@ -839,6 +839,13 @@
   dependencies:
     "@parcel/types" "2.3.2"
 
+"@parcel/reporter-bundle-buddy@^2.3.2":
+  "integrity" "sha512-3UsI/NX83DceWM0Z4Z6eLHluSJeLa5N8yuv6dD0C3H257EDa7AxmoRY13ZqyTG/Gaf8N1HQKB97Ke9X+WvEMjQ=="
+  "resolved" "https://registry.npmjs.org/@parcel/reporter-bundle-buddy/-/reporter-bundle-buddy-2.3.2.tgz"
+  "version" "2.3.2"
+  dependencies:
+    "@parcel/plugin" "2.3.2"
+
 "@parcel/reporter-cli@2.3.2":
   "integrity" "sha512-VYetmTXqW83npsvVvqlQZTbF3yVL3k/FCCl3kSWvOr9LZA0lmyqJWPjMHq37yIIOszQN/p5guLtgCjsP0UQw1Q=="
   "resolved" "https://registry.npmjs.org/@parcel/reporter-cli/-/reporter-cli-2.3.2.tgz"
