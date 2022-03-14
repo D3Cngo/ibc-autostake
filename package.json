@@ -1,5 +1,5 @@
 {
-  "name": "restake",
+  "name": "ibc-autostake",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npx parcel src/index.html --host 0.0.0.0",
+    "start": "npx parcel src/index.html --host 0.0.0.0 --port 1337",
     "prebuild": "rm -rf dist/",
     "build": "npx parcel build src/index.html",
     "autostake": "node scripts/autostake.mjs",
@@ -56,6 +56,7 @@
   },
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.3.2",
+    "@parcel/reporter-bundle-buddy": "^2.3.2",
     "@parcel/transformer-webmanifest": "^2.3.2",
     "crypto-browserify": "^3.12.0",
     "eslint": "^8.10.0",

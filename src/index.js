@@ -1,5 +1,3 @@
-import Bugsnag from '@bugsnag/js'
-import BugsnagPluginReact from '@bugsnag/plugin-react'
 import React from 'react';
 
 import ReactDOM from 'react-dom';
@@ -12,20 +10,11 @@ import {
 import NetworkFinder from './components/NetworkFinder'
 import './index.css';
 import reportWebVitals from './utils/reportWebVitals';
+import { v1 as uuidv1 } from 'uuid';
 
-Bugsnag.start({
-  apiKey: 'dd8eaf2f5a1f2fc0d4032d855cd85906',
-  plugins: [new BugsnagPluginReact()],
-  enabledReleaseStages: [ 'production', 'staging' ],
-  releaseStage: process.env.NODE_ENV
-})
-Bugsnag.notify(new Error('Test error'))
 
-const ErrorBoundary = Bugsnag.getPlugin('react')
-  .createErrorBoundary(React)
 
 ReactDOM.render(
-  <ErrorBoundary>
     <React.StrictMode>
       <BrowserRouter>
         <Routes>
@@ -34,8 +23,7 @@ ReactDOM.render(
           <Route path="/:network/:operator" element={<NetworkFinder />} />
         </Routes>
       </BrowserRouter>
-    </React.StrictMode>
-  </ErrorBoundary>,
+    </React.StrictMode>,
   document.getElementById('root')
 );
 

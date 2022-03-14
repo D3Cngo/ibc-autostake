@@ -22,7 +22,7 @@ import {
   Nav,
   Card,
 } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import GitHubButton from 'react-github-btn'
@@ -38,6 +38,7 @@ import EVMOS from '../assets/chains/EVMOS.png'
 import TERRA from '../assets/chains/TERRA.svg'
 import FROWN from '../assets/frown.svg'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -47,6 +48,7 @@ class App extends React.Component {
     this.getValidatorImage = this.getValidatorImage.bind(this);
     this.loadValidatorImages = this.loadValidatorImages.bind(this);
   }
+
 
   async componentDidMount() {
     await this.setNetwork()
@@ -220,7 +222,7 @@ class App extends React.Component {
           <div className="logo d-flex d-md-none align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
           <h1>FOXFrens IBC</h1>
           </div>
-
+          <div className="d-flex"></div>
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
             <NetworkSelect show={this.state.showNetworkSelect} onHide={() => {this.setState({showNetworkSelect: false})}} networks={this.props.networks}
               network={this.props.network}
@@ -240,23 +242,23 @@ class App extends React.Component {
             <img src={Logo} srcSet={`${Logo2x} 2x,`} alt="FOXFrens IBC Autos-Compounder" className="p-4"/>
             </div>
             
-                <li>
-                <Link to="/cosmoshub" onClick={() => this.changeNetwork({chainId: 'cosmoshub-4'})}><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></Link>
+                <li role="button">
+                <NavLink to="/cosmoshub" onClick={() => this.setState({showNetworkSelect: true, setSelectedNetwork: "cosmoshub"})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={ATOM} className="chain-logo p-2"/> Cosmos <Badge bg="success">ACTIVE</Badge></NavLink>
                 </li>
                 <li>
-                    <Link to="/osmosis" onClick={() => this.changeNetwork({chainId: 'osmosis-1'})}><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
+                    <NavLink to="/osmosis" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></NavLink> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={() => this.changeNetwork({chainId: 'umee-1'})}><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></Link>
+                    <NavLink to="/umee" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></NavLink>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#" onClick={() => this.setState({showAbout: true})}><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={EVMOS} className="chain-logo p-2"/>Evmos <Badge bg="danger">REKT</Badge></a>
                 </li>
                 <li>
                     <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
@@ -268,7 +270,7 @@ class App extends React.Component {
           <Col xs={12} md={8} xl={7}>
           <div className="mb-5 px-4">
           {this.state.address &&
-          <ul className="nav nav-pills justify-content-between mb-3">
+          <ul className="nav nav-pills justify-content-between mb-3 fs-5">
             <li className="nav-item d-none d-xl-block">
               <CopyToClipboard text={this.state.address}
                 onCopy={() => this.setCopied()}>
@@ -336,7 +338,7 @@ class App extends React.Component {
             </ul>
           </p>
           <hr />
-          <p><b>BETA SOFTWARE: </b> Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution. </p>
+          <p><b>DISCLAIMER: </b> Use at your own risk. Although the compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards,  authz module is however fairly new to Cosmos SDK. This project is being refactored from the ground up to eventually serve as a plugin on ShapeShift's platform. </p>
         </div>
       
           </Col>
@@ -381,7 +383,7 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
           </a>
 
       
-          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-4" href="https://app.starname.me/profile/fox*me" target="_blank"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></a>
+          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-4" href="https://gitcoin.co/grants/4836/d3-consortium-open-standards-and-resources-for-th" target="_blank"> <Badge bg="secondary">Gitcoin Grants: Support This Project</Badge></a>
 
           <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
@@ -394,5 +396,4 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
     )
   }
 }
-
 export default App;
