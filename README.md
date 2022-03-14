@@ -9,11 +9,10 @@ When you authorize the compound bot, you allow the bot to create transactions wi
 ## To-Do
 
 [x] Re-themed for DAOs and Organizations with multiple validator holdings
-[ ] Compound APY Calculator / Guesstimator
+[x] Compound APY Calculator / Guesstimator
 [ ] One-click Redelegate All to Host Validator
 [ ] Mobile Support 
-
+[ ] Refactor as a plugin for ShapeShift App
 ---
 
-BETA SOFTWARE: Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution.
-
+[Support this project on Gitcoin Grants.](https://gitcoin.co/grants/4836/d3-consortium-open-standards-and-resources-for-th)

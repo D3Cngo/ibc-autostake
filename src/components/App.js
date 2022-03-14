@@ -338,7 +338,7 @@ class App extends React.Component {
             </ul>
           </p>
           <hr />
-          <p><b>BETA SOFTWARE: </b> Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution. </p>
+          <p><b>DISCLAIMER: </b> Use at your own risk. Although the compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards,  authz module is however fairly new to Cosmos SDK. This project is being refactored from the ground up to eventually serve as a plugin on ShapeShift's platform. </p>
         </div>
       
           </Col>
@@ -383,7 +383,7 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
           </a>
 
       
-          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-4" href="https://app.starname.me/profile/fox*me" target="_blank"> <Badge bg="secondary" href="https://app.starname.me/profile/fox*me">Buy me a beer 🙏</Badge></a>
+          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-4" href="https://gitcoin.co/grants/4836/d3-consortium-open-standards-and-resources-for-th" target="_blank"> <Badge bg="secondary">Gitcoin Grants: Support This Project</Badge></a>
 
           <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
