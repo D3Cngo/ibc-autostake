@@ -22,7 +22,7 @@ import {
   Nav,
   Card,
 } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import {NavLink, Link } from "react-router-dom";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import GitHubButton from 'react-github-btn'
@@ -363,7 +363,6 @@ and <span className="badge bg-secondary">Delegate</span> only to the validator t
       
           <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-6" href="https://gitcoin.co/grants/4836/d3-consortium-open-standards-and-resources-for-th" target="_blank"> <Badge bg="secondary">Gitcoin Grants: Support This Project</Badge></a>
 
-          <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
           <p className="col-md-6 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
           <span className="d-none d-sm-inline me-1">Built with ❤&nbsp;</span> by LPX | Forked from and Inspired by ECO Stake 🌱

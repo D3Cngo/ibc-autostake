@@ -255,6 +255,8 @@
   {
     "name": "cerberus",
     "prettyName": "Cerberus",
+    "chainId": "cerberus-1",
+
     "prefix": "crbrus",
     "denom": "ucrbrus",
     "restUrl": [
@@ -282,15 +284,17 @@
   {
     "name": "microtick",
     "prettyName": "Microtick",
+    "chainId": "microtick-1",
     "prefix": "tick",
     "denom": "utick",
     "restUrl": [
       "https://lcd.microtick.zone"
     ],
     "rpcUrl": [
-      "https://rpc-explorer.microtick.zone/"
+      "https://rpc-explorer.microtick.zone"
     ],
     "gasPrice": "0.0008utick",
+    "image": "https://www.microtick.com/images/mtlogo-sm.png",
     "testAddress": "micro1w2jmj6ndgraxu48hnxsmjj4en5exmcmavla62s",
     "ownerAddress": "microvaloper14g50yy9ahn7yqfk4d8cn40y8uplx4clh4va76x",
     "operators": [
