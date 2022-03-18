@@ -23,8 +23,16 @@
       {
         "address": "osmovaloper1xf9zpq5kpxks49cg606tzd8qstaykxgt2vs0d5",
         "botAddress": "osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g",
-        "runTime": "21:00",
-        "minimumReward": 1000
+        "runTime": "19:31",
+        "minimumReward": 1000,
+        "compoundedAPY": "106.1%"
+      },      
+      {
+        "address": "osmovaloper1vkfmegxrsveefn2wmudh7apxuzu2n77654ad62 ",
+        "botAddress": "osmo16kpulsa29mtc4txqn6srzt84qtc3eejvzcwnuj",
+        "runTime": "19:31",
+        "minimumReward": 1000,
+        "compoundedAPY": "106.1%"
       }
     ],
     "authzSupport": true
@@ -192,6 +200,7 @@
   },
   {
     "name": "lumnetwork",
+    "enabled" : true,
     "prettyName": "Lum Network",
     "chainId": "lum-network-1",
     "prefix": "lum",
@@ -209,16 +218,90 @@
       {
         "address": "lumvaloper1p4qz6gqr3esugvm9n49jl2rz0zhup7ww286t65",
         "botAddress": "lum19pqrxrl6n0g0mky4y79hlfzchprmsp5jxdyjew",
-        "runTime": "21:00",
-        "minimumReward": 1000
-      },
-      {
-        "address": "lumvaloper1068lx20jqswpwtykfezssdkn524kqlmlqjeqpa",
-        "botAddress": "lum19pqrxrl6n0g0mky4y79hlfzchprmsp5jxdyjew",
-        "runTime": "21:00",
-        "minimumReward": 1000
+        "runTime": "4x times daily",
+        "minimumReward": 1000,
+        "compoundedAPY": "198.4%"
       }
     ],
     "authzSupport": true
+  },
+  {
+    "name": "chihuahua",
+    "prettyName": "Chihuahua",
+    "chainId": "chihuahua-1",
+    "prefix": "huahua",
+    "denom": "uhuahua",
+    "restUrl": [
+      "https://rest.cosmos.directory/chihuahua"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/chihuahua"
+    ],
+    "gasPrice": "0.025uhuahua",
+    "testAddress": "chihuahua1yxsmtnxdt6gxnaqrg0j0nudg7et2gqczjr22j5",
+    "ownerAddress": "chihuahuavaloper1pqsdyhefm99ag3a45rkqnc5907yksqvz0tqpzg",
+    "image": "https://raw.githubusercontent.com/osmosis-labs/assetlists/main/images/huahua.png",
+    "operators": [
+      {
+        "address": "chihuahuavaloper1pqsdyhefm99ag3a45rkqnc5907yksqvz0tqpzg",
+        "botAddress": "chihuahua19pqrxrl6n0g0mky4y79hlfzchprmsp5jsj54dc",
+        "runTime": "every 1 hour",
+        "minimumReward": 1000,
+        "compoundedAPY": "MANUAL"
+      }
+    ],
+    "authzSupport": false
+  },
+  {
+    "name": "cerberus",
+    "prettyName": "Cerberus",
+    "prefix": "crbrus",
+    "denom": "ucrbrus",
+    "restUrl": [
+      "https://rest.cosmos.directory/cerberus"
+    ],
+    "rpcUrl": [
+      "https://rpc.cosmos.directory/cerberus"
+    ],
+    "gasPrice": "0.025ucrbrus",
+    "testAddress": "cerberus1yxsmtnxdt6gxnaqrg0j0nudg7et2gqczd38dxa",
+    "ownerAddress": "cerberusvaloper1tat2cy3f9djtq9z7ly262sqngcarvaktr0w78f",
+    "image": "https://cerberus-chain.s3.us-east-2.amazonaws.com/main/logo.png",
+
+    "operators": [
+      {
+        "address": "cerberusvaloper1jkf678dyg8k6ewkfu6xwvtl2sz68gfh3ys4s2h",
+        "botAddress": "cerberus19pqrxrl6n0g0mky4y79hlfzchprmsp5j0qeje3",
+        "runTime": "1 hour",
+        "minimumReward": 100000000,
+        "compoundedAPY": "1123.4%"
+      }
+    ],
+    "authzSupport": true
+  },
+  {
+    "name": "microtick",
+    "prettyName": "Microtick",
+    "prefix": "tick",
+    "denom": "utick",
+    "restUrl": [
+      "https://lcd.microtick.zone"
+    ],
+    "rpcUrl": [
+      "https://rpc-explorer.microtick.zone/"
+    ],
+    "gasPrice": "0.0008utick",
+    "testAddress": "micro1w2jmj6ndgraxu48hnxsmjj4en5exmcmavla62s",
+    "ownerAddress": "microvaloper14g50yy9ahn7yqfk4d8cn40y8uplx4clh4va76x",
+    "operators": [
+      {
+        "address": "microvaloper14g50yy9ahn7yqfk4d8cn40y8uplx4clh4va76x",
+        "botAddress": "micro1w2jmj6ndgraxu48hnxsmjj4en5exmcmavla62s",
+        "runTime": "1 hour",
+        "minimumReward": 10000000,
+        "compoundedAPY": "???"
+      }
+    ],
+    "authzSupport": false
   }
 ]

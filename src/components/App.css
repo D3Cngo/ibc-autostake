@@ -28,7 +28,7 @@ header a.moniker{
 }
 
 .sidebar-nav>.sidebar-brand img {
-  zoom: 80%;
+  zoom: 85%;
   margin-bottom: 40px;
 }
 
@@ -37,7 +37,7 @@ header a.moniker{
   background: none;
 }
 .sidebar-nav li {
-  padding:10px 30px 10px 0px;
+  padding:10px 10px 10px 0px;
   line-height: 40px;
 }
 .sidebar-nav li:first-of-type {
@@ -48,6 +48,7 @@ header a.moniker{
   text-decoration: none;
   color: #999999;
   padding-left:18px;
+  font-size: 0.8rem;
 }
 
 .sidebar-nav li a:hover {
@@ -151,4 +152,18 @@ img.frown{
 
 li .badge {
   margin-left: 10px;
+  font-size: 0.7rem;
+}
+
+a.funding-wallet{
+  text-decoration: none;
+}
+
+ul.bot-addresses{
+  font-size:90%;
+}
+
+[aria-current]:not([aria-current="false"]) {
+  font-weight: bold;
+  color: #fff !important;
 }

@@ -34,7 +34,10 @@ import ATOM from '../assets/chains/ATOM.svg'
 import OSMO from '../assets/chains/OSMO.svg'
 import JUNO from '../assets/chains/JUNO.svg'
 import UMEE from '../assets/chains/UMEE.png'
-import EVMOS from '../assets/chains/EVMOS.png'
+import CRBRUS from '../assets/chains/CRBRUS.png'
+import HUAHUA from '../assets/chains/HUAHUA.png'
+import LUM from '../assets/chains/LUM.png'
+import MICROTICK from '../assets/chains/MICROTICK.png'
 import TERRA from '../assets/chains/TERRA.svg'
 import FROWN from '../assets/frown.svg'
 
@@ -220,35 +223,7 @@ class App extends React.Component {
           <div className="logo d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none">
         
           </div>
-<<<<<<< Updated upstream
-          {this.state.address &&
-          <ul className="nav nav-pills justify-content-end">
-            <li className="nav-item d-none d-xl-block">
-              <CopyToClipboard text={this.state.address}
-                onCopy={() => this.setCopied()}>
-                <span role="button"><span className={'nav-link disabled clipboard' + (this.state.copied ? ' copied' : '')}>{this.state.address}</span></span>
-              </CopyToClipboard>
-            </li>
-            <li className="nav-item d-none d-md-block">
-              <span className="nav-link ps-4">
-                <Badge>
-                  <Coins
-                    coins={this.state.balance}
-                    decimals={this.props.network.data.decimals}
-                  />
-                </Badge>
-              </span>
-            </li>
-            {false && (
-              <li className="nav-item ps-4">
-                <Button onClick={() => this.disconnect()} className="nav-link btn-link" aria-current="page">Disconnect</Button>
-              </li>
-            )}
-          </ul>
-          }
-=======
           <div className="d-flex"></div>
->>>>>>> Stashed changes
           <div className="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none pr-4 mr-4 ps-4">
             <NetworkSelect show={this.state.showNetworkSelect} onHide={() => {this.setState({showNetworkSelect: false})}} networks={this.props.networks}
               network={this.props.network}
@@ -272,22 +247,27 @@ class App extends React.Component {
                     <Link to="/osmosis" onClick={this.showNetworkSelect} role="button"><img src={OSMO} className="chain-logo p-1"/> Osmosis <Badge bg="success">ACTIVE</Badge></Link> 
                 </li>
                 <li>
-                    <Link to="/umee" onClick={this.showNetworkSelect} role="button"><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="info">PRE-DELEGATION</Badge></Link>
+                    <NavLink to="/umee" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={UMEE} className="chain-logo p-2"/>Umee <Badge bg="success">ACTIVE</Badge></NavLink>
+                </li>               
+                 <li>
+                    <NavLink to="/cerberus" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={CRBRUS} className="chain-logo p-2"/>Cerberus <Badge bg="success">TAXISTAKE</Badge></NavLink>
+                </li>                   
+                 <li>
+                    <NavLink to="/lumnetwork" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={LUM} className="chain-logo p-2"/>Lum Network <Badge bg="success">TAXISTAKE</Badge></NavLink>
+                </li>                 
+                <li>
+                    <NavLink to="/chihuahua" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={HUAHUA} className="chain-logo p-2"/>HUAHUA <Badge bg="success">TAXISTAKE</Badge></NavLink>
+                </li>                
+                <li>
+                    <NavLink to="/microtick" onClick={() => this.setState({showNetworkSelect: true})} className={isActive => "nav-link" + (!isActive ? " unselected" : "") }><img src={MICROTICK} className="chain-logo p-2"/>Microtick <Badge bg="success">TAXISTAKE</Badge></NavLink>
                 </li>
                 <li>
-                    <a href="#"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
-                </li>
-             
-                <li>
-                    <a href="#"><img src={TERRA} className="chain-logo p-2"/>TERRA <Badge bg="secondary">COMING SOON</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={JUNO} className="chain-logo p-2"/>Juno <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
                 <li>
-                    <a href="#"><img src={EVMOS} className="chain-logo p-2"/>EVMOS <Badge bg="danger">INACTIVE</Badge></a>
+                    <a href="#" onClick={() => this.setState({showAbout: true})} className="nav-link"><img src={TERRA} className="chain-logo p-2"/>Terra <Badge bg="secondary">COMING SOON</Badge></a>
                 </li>
-                <li>
-                    <a href="mailto:lpx@shapeshift.one"><img src={FROWN} className="chain-logo frown p-2"/> Report Bugs</a>
-                </li>
-               
+     
             </ul>
         </div>
           </Col>
@@ -328,15 +308,15 @@ class App extends React.Component {
             <strong>At the moment the claim and re-stake transaction fees are paid for by the compound bot operator (LPX) with a donation by Operations. This will be a testing ground for the auto-compound feature until the DAO potentially takes ownership of this project and integrate it into the ShapeShift Platform, which is slated to support the Cosmos network in roughly one month.</strong>
           </p>         
            <p className="mb-4">
-            <strong>Every 24 hours (roughly 18:00 UTC) all delegated wallets will auto-compound to ShapeShift's validators. The compound bots' addresses and balances can be checked below:</strong>
-            <ul className="mt-4">
-              <li>Osmosis: osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g</li>
-              <li>Cosmos: cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6</li>
+            <strong>Every 24 hours (shortly after Osmosis' epoch) all delegated wallets will auto-compound to ShapeShift's validators. Umee rewards are compounded multiple times a day because the math makes sense. The compound bots' addresses and balances can be checked below:</strong>
+            <ul className="mt-4 bot-addresses">
+              <li><b>Osmosis:</b> osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/osmosis/account/osmo19pqrxrl6n0g0mky4y79hlfzchprmsp5jmu2t6g">&nbsp;↪</a></li>
+              <li><b>Cosmos:</b> cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6 <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/cosmos/account/cosmos19pqrxrl6n0g0mky4y79hlfzchprmsp5jn8emv6">&nbsp;↪</a></li>
+              <li><b>Umee:</b> umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg <a className="funding-wallet" target="_blank" href="https://www.mintscan.io/umee/account/umee19pqrxrl6n0g0mky4y79hlfzchprmsp5jp3yygg">&nbsp;↪</a></li>
             </ul>
           </p>
           <hr />
-          <p><b>BETA SOFTWARE: </b> Use at your own risk. The compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards. However, as with all new software, it is recommended to proceed with caution. </p>
-          <p>FOX Tips Always Welcome 😉 <Badge bg="secondary">0x7d35CC8b38a380b1Cd6ecA2E7cEe3da5B3bD4D3C</Badge></p>
+          <p><b>DISCLAIMER: </b> Use at your own risk. Although the compound bot has no access to wallet funds and is only authorized to claim and re-stake rewards, the authz module is fairly new to Cosmos SDK. This project is being refactored from the ground up to eventually serve as a plugin on ShapeShift's platform. </p>
         </div>
       
           </Col>
@@ -348,9 +328,9 @@ class App extends React.Component {
             <hr />
             <Card.Text className="small">
 
-              <p>The auto-compounder makes use of a new feature in Cosmos blockchains called <a href="https://docs.cosmos.network/master/modules/authz/">Authz</a>. This allows a validator (or any other wallet) to send certain <b>pre-authorized</b> transactions on your behalf.</p>
-          <p>When you authorize the compound bot, you allow the bot to create transactions with <span class="badge bg-secondary">WithdrawDelegatorReward</span>&nbsp; 
-and <span class="badge bg-secondary">Delegate</span> only to the validator that have been approved by you - personal <b>funds are never exposed, and the compounding bot cannot delegate to an unapproved validator</b>. The authorisation has been set to automatically expire after four months, and you can revoke the permissions at any time.</p>
+              <p>The auto-compounder makes use of a new feature in Cosmos SDK called <a href="https://docs.cosmos.network/master/modules/authz/">Authz</a>. This allows a validator (or any other wallet) to send certain <b>pre-authorized</b> transactions on your behalf.</p>
+          <p>When you authorize the compound bot, you allow the bot to create transactions with <span className="badge bg-secondary">WithdrawDelegatorReward</span>&nbsp; 
+and <span className="badge bg-secondary">Delegate</span> only to the validator that have been approved by you - personal <b>funds are never exposed, and the compounding bot cannot delegate to an unapproved validator</b>. The authorisation has been set to automatically expire after four months, and you can revoke the permissions at any time.</p>
 <p>Most importantly, the source code is completely open source and available for viewing.</p>
           </Card.Text>
 
@@ -381,6 +361,9 @@ and <span class="badge bg-secondary">Delegate</span> only to the validator that 
           </a>
 
       
+          <a className="col-md-4 mb-0 text-muted text-center justify-content-center d-none d-lg-flex fs-6" href="https://gitcoin.co/grants/4836/d3-consortium-open-standards-and-resources-for-th" target="_blank"> <Badge bg="secondary">Gitcoin Grants: Support This Project</Badge></a>
+
+          <p className="col-md-4 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
 
           <p className="col-md-6 mb-0 text-muted text-end justify-content-end d-none d-lg-flex">
           <span className="d-none d-sm-inline me-1">Built with ❤&nbsp;</span> by LPX | Forked from and Inspired by ECO Stake 🌱

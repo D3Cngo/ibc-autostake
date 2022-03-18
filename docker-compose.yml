@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - '1337:1337'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
