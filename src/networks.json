@@ -262,7 +262,7 @@
       "https://rest.cosmos.directory/cerberus"
     ],
     "rpcUrl": [
-      "https://rpc.cosmos.directory/cerberus"
+      "http://rpc.cerberus.zone:26657"
     ],
     "gasPrice": "0.025ucrbrus",
     "testAddress": "cerberus1yxsmtnxdt6gxnaqrg0j0nudg7et2gqczd38dxa",
