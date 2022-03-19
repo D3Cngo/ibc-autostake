@@ -232,7 +232,7 @@
     "prefix": "huahua",
     "denom": "uhuahua",
     "restUrl": [
-      "https://rest.cosmos.directory/chihuahua"
+      "https://api.chihuahua.wtf"
     ],
     "rpcUrl": [
       "https://rpc.cosmos.directory/chihuahua"
@@ -255,8 +255,7 @@
   {
     "name": "cerberus",
     "prettyName": "Cerberus",
-    "chainId": "cerberus-1",
-
+    "chainId": "cerberus-chain-1",
     "prefix": "crbrus",
     "denom": "ucrbrus",
     "restUrl": [
