@@ -232,7 +232,7 @@
     "prefix": "huahua",
     "denom": "uhuahua",
     "restUrl": [
-      "https://api.chihuahua.wtf"
+      "https://rest.cosmos.directory/chihuahua"
     ],
     "rpcUrl": [
       "https://rpc.cosmos.directory/chihuahua"
