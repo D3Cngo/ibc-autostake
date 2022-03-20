@@ -206,6 +206,10 @@
     "chainId": "lum-network-1",
     "prefix": "lum",
     "denom": "ulum",
+    "autostake": {
+      "correctSlip44": true,
+      "slip44": 880
+    },
     "restUrl": [
       "https://rest.cosmos.directory/lumnetwork",
       "https://node0.mainnet.lum.network/rest"
@@ -233,9 +237,11 @@
     "prefix": "huahua",
     "denom": "uhuahua",
     "restUrl": [
+      "https://api.chihuahua.wtf/",
       "https://rest.cosmos.directory/chihuahua"
     ],
     "rpcUrl": [
+      "https://rpc.chihuahua.wtf/",
       "https://rpc.cosmos.directory/chihuahua"
     ],
     "gasPrice": "0.025uhuahua",
