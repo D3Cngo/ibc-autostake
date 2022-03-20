@@ -256,15 +256,17 @@
     "name": "cerberus",
     "prettyName": "Cerberus",
     "chainId": "cerberus-chain-1",
-    "prefix": "crbrus",
+    "prefix": "cerberus",
     "denom": "ucrbrus",
     "restUrl": [
+      "https://api.cerberus.zone:1317/",
       "https://rest.cosmos.directory/cerberus"
     ],
     "rpcUrl": [
+      "https://rpc.cerberus.zone:26657/",
       "https://rpc.cosmos.directory/cerberus"
     ],
-    "gasPrice": "0.025ucrbrus",
+    "gasPrice": "0.0035crbrus",
     "testAddress": "cerberus1yxsmtnxdt6gxnaqrg0j0nudg7et2gqczd38dxa",
     "ownerAddress": "cerberusvaloper1tat2cy3f9djtq9z7ly262sqngcarvaktr0w78f",
     "image": "https://cerberus-chain.s3.us-east-2.amazonaws.com/main/logo.png",
